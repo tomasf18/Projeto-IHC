@@ -3,7 +3,7 @@ import { Avatar, Dropdown, Navbar, Button } from "flowbite-react";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import LoginModal from "./LoginModal";
 import AppointmentModal from "./AppointmentModal";
-import { useUser } from "../../context/UserContext";
+import { useUser } from "../../contexts/UserContext";
 
 export default function Component() {
   const navigate = useNavigate();

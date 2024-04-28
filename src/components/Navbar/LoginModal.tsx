@@ -1,5 +1,5 @@
 import { Button, Checkbox, Label, Modal, TextInput } from "flowbite-react";
-import { useUser } from "../../context/UserContext";
+import { useUser } from "../../contexts/UserContext";
 import { useNavigate } from "react-router-dom";
 
 export default function LoginModal({

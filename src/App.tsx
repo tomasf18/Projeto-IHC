@@ -7,6 +7,7 @@ import Establishments from './pages/Establishments'
 import Help from './pages/Help'
 import Appointments from './pages/Appointments'
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
+import { AppointmentProvider } from './contexts/AppointmentContext';
 
 function App() {
   return (
@@ -16,10 +17,14 @@ function App() {
         <Route path='/home' element={<Home />} />
         <Route path='/shop' element={<Shop />} />
         <Route path='/trending' element={<Trending />} />
-        <Route path='/appointment' element={<Appointment />} />
         <Route path='/establishments' element={<Establishments />} />
         <Route path='/help' element={<Help />} />
         <Route path='/appointments' element={<Appointments />} />
+        <Route path='/appointment' element={
+            <AppointmentProvider>
+                <Appointment />
+            </AppointmentProvider>  
+        } />
       </Routes>
     </BrowserRouter>
   )
