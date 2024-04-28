@@ -1,16 +1,19 @@
 import "flowbite";
 import DateComponent from "./DateComponent";
 import Indicators from "../Indicators";
+import { useAppointmentContext } from "../../../contexts/AppointmentContext";
 
-function DateTime({
-    prevStep,
-    currentStep,
-    nextStep,
-}: {
-    prevStep: () => void;
-    currentStep: number;
-    nextStep: () => void;
-}) {
+function DateTime() {
+    const { currentStep, nextStep, prevStep, selectedDate, setSelectedDate, selectedTime, setSelectedTime } = useAppointmentContext()
+
+    console.log(console.log("DateTime -> ", selectedDate + " " + selectedTime))
+
+    const handleBackClick = () => {
+        prevStep();
+        setSelectedDate(""); // Reset date selection
+        setSelectedTime(""); // Reset time selection
+    };
+
     return (
         <>
             <div className="grid grid-rows-6 row-span-6 h-full border-r-4 border-slate-600">
@@ -33,11 +36,11 @@ function DateTime({
                 <DateComponent />
 
                 <div className="absolute bottom-0 inset-x-0 border-4 border-yellow-900 p-4 grid grid-cols-8 grid-rows-1">
-                    <button className="mr-2 col-span-2" onClick={prevStep}>
+                    <button className="mr-2 col-span-2" onClick={handleBackClick}>
                         Voltar
                     </button>
                     <div className="col-span-4"></div>
-                    <button className="ml-2 col-span-2 pr-2" onClick={nextStep}>
+                    <button className="ml-2 col-span-2 pr-2" onClick={(selectedDate !== "" && selectedTime !== "") ? nextStep : undefined}>
                         Próximo
                     </button>
                 </div>

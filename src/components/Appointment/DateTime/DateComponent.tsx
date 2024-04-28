@@ -2,12 +2,14 @@ import { useState } from "react"
 import Datepicker from "tailwind-datepicker-react"
 import { IOptions } from "tailwind-datepicker-react/types/Options"
 import Hora from "./Time"
+import { useAppointmentContext } from "../../../contexts/AppointmentContext"
 
 
 function DateComponent() {
 
+    const { selectedDate, setSelectedDate } = useAppointmentContext();
+    
     const [show, setShow] = useState<boolean>(true);
-    const [selectedDate, setSelectedDate] = useState<Date | null>(null);
     const defaultDate = new Date(Date.now());
 
     const options: IOptions = {
@@ -50,38 +52,33 @@ function DateComponent() {
         }
     }
 
-    const [dateSelected, setDateSelected] = useState(false);
-
     return (
-        <div style={{ height: 389}} className={`flex flex-col h-full ${dateSelected ? 'justify-center' : ''} items-center border-4 border-lime-400`}>
-            <div className={dateSelected ? 'relative border-4 w-9/12 border-red-950 mb-3' : 'w-5/12 mt-3'}>
+        <div style={{ height: 389}} className={`flex flex-col h-full ${(selectedDate !== "" && !show) ? 'justify-center' : ''} items-center border-4 border-lime-400`}>
+            <div className={(selectedDate !== "" && !show) ? 'relative border-4 w-9/12 border-red-950 mb-3' : 'w-5/12 mt-3'}>
             <Datepicker 
                 show={show} 
                 setShow={(state) => {
                     setShow(state);
-                    setDateSelected(!state)
                 }} 
                 options={{...options, defaultDate}} 
                 classNames="w-full"
                 onChange={(date) => {
-                    setSelectedDate(date);
-                    localStorage.setItem("selectedDate", date.getDate().toString() + "/" + (date.getMonth() + 1).toString() + "/" + date.getFullYear().toString());
+                    setSelectedDate(date.getDate().toString() + "/" + (date.getMonth() + 1).toString() + "/" + date.getFullYear().toString());
                 }}
             />
             </div>
-                     {dateSelected && selectedDate && selectedDate.getTime() !== defaultDate.getTime() && ( 
-                <div className="border-4 border-lime-500 w-9/12">
-                    <ul id="timetable" className="grid w-full grid-cols-4 px-10 py-2 gap-2">
-                        <Hora valor="9:00" />
-                        <Hora valor="10:00" />
-                        <Hora valor="11:00" />
-                        <Hora valor="12:00" />
-                        <Hora valor="14:00" />
-                        <Hora valor="15:00" />
-                        <Hora valor="16:00" />
-                        <Hora valor="17:00" />
-                    </ul> 
-                </div> 
+            {(selectedDate !== "" && !show) && ( <div className="border-4 border-lime-500 w-9/12">
+                                            <ul id="timetable" className="grid w-full grid-cols-4 px-10 py-2 gap-2">
+                                                <Hora valor="9:00" />
+                                                <Hora valor="10:00" />
+                                                <Hora valor="11:00" />
+                                                <Hora valor="12:00" />
+                                                <Hora valor="14:00" />
+                                                <Hora valor="15:00" />
+                                                <Hora valor="16:00" />
+                                                <Hora valor="17:00" />
+                                            </ul> 
+                                        </div> 
             )}
         </div>
     )

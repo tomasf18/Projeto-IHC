@@ -1,22 +1,20 @@
+import { useAppointmentContext } from "../../../contexts/AppointmentContext";
 import Indicadores from "../Indicators";
 
-function Summary({
-    prevStep,
-    currentStep,
-    nextStep,
-}: {
-    prevStep: () => void;
-    currentStep: number;
-    nextStep: () => void;
-}) {
-    const estabelecimento = localStorage.getItem("selectedLocal");
-    const tipoDeServico = localStorage.getItem("selectedTypeOfServiceName");
-    const servico = JSON.parse(localStorage.getItem("selectedService") ?? "");
-    const servicoNome = servico.nome;
-    const servicoPreco = servico.preco;
-    const profissional = localStorage.getItem("selectedProfessional");
-    const data = localStorage.getItem("selectedDate");
-    const hora = localStorage.getItem("selectedTime");
+function Summary() {
+    const { currentStep, prevStep, selectedLocalization, selectedTypeOfService, selectedServiceName, selectedServicePrice, 
+        selectedProfessional, selectedDate, selectedTime, setSelectedDate, setSelectedTime, setConfirmed } = useAppointmentContext();
+
+    const handleBackClick = () => {
+        prevStep();
+        setConfirmed(false);
+        setSelectedDate(""); // Reset date selection
+        setSelectedTime(""); // Reset time selection;
+    };
+
+    const handleConfirmClick = () => {
+        setConfirmed(true);
+    };
 
     return (
         <>
@@ -41,24 +39,24 @@ function Summary({
                     <div className="col-span-2 border-4 border-gray-700 grid grid-rows-5">
                         <div className="bg-red-200 m-3">
                             <h1 className="text-xs">Estabelecimento</h1>
-                            <p className="text-xl">{estabelecimento}</p>
+                            <p className="text-xl">{selectedLocalization}</p>
                         </div>
                         <div className="bg-blue-200 m-3">
                             <h1 className="text-xs">Tipo De Serviço</h1>
-                            <p className="text-xl">{tipoDeServico}</p>
+                            <p className="text-xl">{selectedTypeOfService}</p>
                         </div>
                         <div className="bg-yellow-200 m-3">
                             <h1 className="text-xs">Serviço</h1>
-                            <p className="text-xl">{servicoNome}</p>
+                            <p className="text-xl">{selectedServiceName}</p>
                         </div>
                         <div className="bg-green-200 m-3">
                             <h1 className="text-xs">Profissional</h1>
-                            <p className="text-xl">{profissional}</p>
+                            <p className="text-xl">{selectedProfessional}</p>
                         </div>
                         <div className="bg-gray-200 m-3">
                             <h1 className="text-xs">Data & Hora</h1>
                             <p className="text-xl">
-                                {data}, {hora}
+                                {selectedDate}, {selectedTime}
                             </p>
                         </div>
                     </div>
@@ -67,7 +65,7 @@ function Summary({
                         <div className="border-4 border-gray-700 h-full grid grid-rows-1 items-end justify-items-end">
                             <div className="bg-purple-200 m-3">
                                 <h1 className="text-xl">
-                                    Total: {servicoPreco}€
+                                    Total: {selectedServicePrice}€
                                 </h1>
                             </div>
                         </div>
@@ -75,11 +73,11 @@ function Summary({
                 </div>
 
                 <div className="row-span-1 border-4 border-yellow-900 p-4 w-full grid grid-cols-8 grid-rows-1">
-                    <button className="mr-2 col-span-2" onClick={prevStep}>
+                    <button className="mr-2 col-span-2" onClick={handleBackClick}>
                         Voltar
                     </button>
                     <div className="col-span-4"></div>
-                    <button className="ml-2 col-span-2 pr-2" onClick={nextStep}>
+                    <button className="ml-2 col-span-2 pr-2" onClick={handleConfirmClick}>
                         Confirmar
                     </button>
                 </div>

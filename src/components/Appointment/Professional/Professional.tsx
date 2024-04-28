@@ -1,20 +1,15 @@
-import { useState } from "react";
 import Indicators from "../Indicators";
 import RenderProfessioals from "./RenderProfessionals";
+import { useAppointmentContext } from "../../../contexts/AppointmentContext";
 
-function Professional({
-    nextStep,
-    currentStep,
-    prevStep,
-}: {
-    nextStep: () => void;
-    currentStep: number;
-    prevStep: () => void;
-}) {
-    const [professionalSelected, setprofessionalSelected] = useState(0);
+function Professional() {
+    const { currentStep, nextStep, prevStep, selectedProfessional, setSelectedProfessional } = useAppointmentContext()
 
-    const handleProfessionalSelection = (professionalId: number) => {
-        setprofessionalSelected(professionalId);
+    console.log("Professional -> selectedProfessional", selectedProfessional);
+
+    const handleBackClick = () => {
+        prevStep();
+        setSelectedProfessional(""); // Reset professional selection
     };
 
     return (
@@ -36,17 +31,15 @@ function Professional({
             </div>
 
             <div className="row-span-5 col-span-5 h-full relative border-l-4 border-4 border-red-600 flex flex-col">
-                <RenderProfessioals
-                    onClick={handleProfessionalSelection}
-                />
+                <RenderProfessioals />
                 <div className="border-4 border-yellow-900 p-4 grid grid-cols-8 grid-rows-1">
-                    <button className="mr-2 col-span-2" onClick={prevStep}>
+                    <button className="mr-2 col-span-2" onClick={handleBackClick}>
                         Voltar
                     </button>
                     <div className="col-span-4"></div>
                     <button
                         className="ml-2 col-span-2 pr-2"
-                        onClick={professionalSelected ? nextStep : undefined}
+                        onClick={(selectedProfessional !== "") ? nextStep : undefined}
                     >
                         Próximo
                     </button>

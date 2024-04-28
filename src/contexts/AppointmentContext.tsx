@@ -18,9 +18,10 @@ interface AppointmentContextProps {
     typeOfServiceItems: { text: string; id: number }[];
     selectedServiceName: string;
     selectedServicePrice: number;
-    professional: string;
-    date: string;
-    time: string;
+    selectedProfessional: string;
+    selectedDate: string;
+    selectedTime: string;
+    confirmed: boolean;
     nextStep: () => void;
     prevStep: () => void;
     reset: () => void;
@@ -30,9 +31,10 @@ interface AppointmentContextProps {
     handleSexChange: (isManSelected: boolean) => void;
     setSelectedServiceName: (service: string) => void;
     setSelectedServicePrice: (price: number) => void;
-    setProfessional: (professional: string) => void;
-    setDate: (date: string) => void;
-    setTime: (time: string) => void;
+    setSelectedProfessional: (selectedProfessional: string) => void;
+    setSelectedDate: (selectedDate: string) => void;
+    setSelectedTime: (selecetedTime: string) => void;
+    setConfirmed: (confirmed: boolean) => void;
 }
 
 export const AppointmentContext = createContext<AppointmentContextProps | null>(
@@ -59,9 +61,10 @@ export const AppointmentProvider = ({ children }: { children: React.ReactNode; }
         setIsDropdownHidden(false);
         setSelectedTypeOfService("");
         setSelectedServiceName("");
-        setProfessional("");
-        setDate("");
-        setTime("");
+        setSelectedProfessional("");
+        setSelectedDate("");
+        setSelectedTime("");
+        setConfirmed(false);
     }, []);
 
 
@@ -78,7 +81,7 @@ export const AppointmentProvider = ({ children }: { children: React.ReactNode; }
         Braga: "STUDIO+MZ",
         Coimbra: "Barbearia+Adónis",
         Lisboa: "Barbearia+Partner",
-        Porto: "Largo+do+Padrão+-+Cabeleireiro+de+Senhoras+e+Cabeleireiro+de+Homens",
+        Porto: "Largo+do+Padrão+-+Cabeleireiro",
         Santarém: "Leonor+Cabeleireiro",
         Viseu: "Beleza+32+-+Cabeleireiro+e+Estética+Viseu",
     };
@@ -129,12 +132,16 @@ export const AppointmentProvider = ({ children }: { children: React.ReactNode; }
 
 
     /* ---------------------- Profissional ---------------------- */
-    const [professional, setProfessional] = useState("");
+    const [selectedProfessional, setSelectedProfessional] = useState("");
 
 
     /* ---------------------- Data e hora ---------------------- */
-    const [date, setDate] = useState("");
-    const [time, setTime] = useState("");
+    const [selectedDate, setSelectedDate] = useState("");
+    const [selectedTime, setSelectedTime] = useState("");
+
+
+    /* ---------------------- Confirmação ---------------------- */
+    const [confirmed, setConfirmed] = useState(false);
 
     return (
         <AppointmentContext.Provider
@@ -149,9 +156,10 @@ export const AppointmentProvider = ({ children }: { children: React.ReactNode; }
                 typeOfServiceItems,
                 selectedServiceName,
                 selectedServicePrice,
-                professional,
-                date,
-                time,
+                selectedProfessional,
+                selectedDate,
+                selectedTime,
+                confirmed,
                 nextStep,
                 prevStep,
                 reset,
@@ -161,9 +169,10 @@ export const AppointmentProvider = ({ children }: { children: React.ReactNode; }
                 handleSexChange,
                 setSelectedServiceName,
                 setSelectedServicePrice,
-                setProfessional,
-                setDate,
-                setTime,
+                setSelectedProfessional,
+                setSelectedDate,
+                setSelectedTime,
+                setConfirmed,
             }}
         >
             {children}

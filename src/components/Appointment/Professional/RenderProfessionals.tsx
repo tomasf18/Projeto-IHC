@@ -1,15 +1,7 @@
-import { useState } from "react";
-import Item from "./Item";
+import Item from "./ProfessionalCard";
 
 
-const RenderProfessioals = ({ onClick }: { onClick: (professionalId: number) => void }) => {
-    const [professionalSelected, setProfessionalSelected] = useState(0);
-
-    const handleprofessionalSelection = (professionalId: number) => {
-        setProfessionalSelected(professionalId);
-        onClick(professionalId);
-        localStorage.setItem("selectedProfessional", professionalsInfo[professionalId.toString()]);
-    };
+const RenderProfessioals = () => {
 
     // Obtém os itens de serviço com base no sexo e tipo de serviço selecionados
     const professionalsInfo: { [key: string]: string } = {
@@ -23,7 +15,7 @@ const RenderProfessioals = ({ onClick }: { onClick: (professionalId: number) => 
     return (
         <div style={{ maxHeight: '388px' }} className="border-4 border-violet-800 flex-grow overflow-auto grid grid-cols-3 justify-items-center">
             {Object.keys(professionalsInfo).map((key) => (
-                <Item key={key} cardImage={`https://via.placeholder.com/150`} nome={professionalsInfo[key]} onClick={() => handleprofessionalSelection(parseInt(key))} selected={professionalSelected === parseInt(key)} />
+                <Item key={key} cardImage={`https://via.placeholder.com/150`} name={professionalsInfo[key]} />
             ))}
         </div>
     );

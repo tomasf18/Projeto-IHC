@@ -8,22 +8,17 @@ import Summary from './Summary/Summary';
 import Confirmed from './Confirmed/Confirmed';
 
 function MakeAppointment() {
-  const { currentStep } = useAppointmentContext();
-
-  /*
-      
-      
-      {currentStep === 4 && <Professional />}
-      {currentStep === 5 && <DateTime />}
-      {currentStep === 6 && <Summary />}
-      {currentStep === 7 && <Confirmed />}
-  */
+  const { currentStep, confirmed } = useAppointmentContext();
 
   return (
-    <div id="container" className='grid grid-rows-6 grid-cols-6 bg-white p-2 rounded-lg shadow-md w-1/2 min-h-144 items-center border-4 border-cyan-950'>
+    <div id="container" className='relative grid grid-rows-6 grid-cols-10 md:grid-cols-6 bg-white rounded-lg w-full lg:w-10/12 min-h-144 items-center'>
       {currentStep === 1 && <Localization />}
       {currentStep === 2 && <TypeOfService />}
       {currentStep === 3 && <Service />}
+      {currentStep === 4 && <Professional />}
+      {currentStep === 5 && <DateTime />}
+      {currentStep === 6 && <Summary />}
+      {confirmed && <Confirmed />}
     </div>
   );
 }
