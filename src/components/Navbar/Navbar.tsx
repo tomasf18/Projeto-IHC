@@ -36,6 +36,14 @@ export default function Component() {
   const [openAppointmentModal, setOpenAppointmentModal] = useState(false);
   const { user, logout } = useUser();
 
+  const handleProfileClick = () => {
+    if (user?.isClient) {
+      navigate("/client");
+    } else {
+      navigate("/professional");
+    }
+  }
+
   function onCloseLoginModal() {
     setOpenLoginModal(false);
   }
@@ -72,7 +80,7 @@ export default function Component() {
     }
   };
   return (
-    <Navbar fluid rounded>
+    <Navbar fluid rounded className="fixed top-0 w-full">
       <Link to="/" className="flex flex-row">
         <img
           src="/public/logo.png"
@@ -98,7 +106,7 @@ export default function Component() {
                 {user.email}
               </span>
             </Dropdown.Header>
-            <Dropdown.Item>Profile</Dropdown.Item>
+            <Dropdown.Item onClick={handleProfileClick}>Profile</Dropdown.Item>
             <Dropdown.Item>Settings</Dropdown.Item>
             <Dropdown.Divider />
             <Dropdown.Item onClick={handleLogout}>Sign out</Dropdown.Item>

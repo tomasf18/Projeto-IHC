@@ -1,7 +1,7 @@
 import Footer from "../components/Footer/Footer";
 import Navbar from "../components/Navbar/Navbar";
 
-export default function Help() {
+export default function ClientProfile() {
   return (
     <>
       <div className="flex flex-col min-h-screen">
@@ -11,7 +11,7 @@ export default function Help() {
           style={{ paddingTop: "60.8px" }}
         >
           <div className="mb-8 mt-8">
-            <span className="text-gray-900 text-4xl">Help</span>
+            <span className="text-gray-900 text-4xl">Client Profile</span>
           </div>
         </div>
         <Footer />

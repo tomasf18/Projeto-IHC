@@ -1,6 +1,6 @@
 import { Button, Checkbox, Label, Modal, TextInput } from "flowbite-react";
 import { useUser } from "../../contexts/UserContext";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, Link } from "react-router-dom";
 
 export default function LoginModal({
   openModal,
@@ -14,7 +14,8 @@ export default function LoginModal({
 
   const handleLogin = () => {
     const email = (document.getElementById("email") as HTMLInputElement).value;
-    const password = (document.getElementById("password") as HTMLInputElement).value;
+    const password = (document.getElementById("password") as HTMLInputElement)
+      .value;
     login(email, password);
     onCloseModal();
     navigate("/");
@@ -53,16 +54,16 @@ export default function LoginModal({
             </a>
           </div>
           <div className="w-full">
-            <Button onClick={handleLogin}>Log in to your account</Button> 
+            <Button onClick={handleLogin}>Log in to your account</Button>
           </div>
           <div className="flex justify-between text-sm font-medium text-gray-500 dark:text-gray-300">
             Not registered?&nbsp;
-            <a
-              href="#"
+            <Link
+              to="/register"
               className="text-cyan-700 hover:underline dark:text-cyan-500"
             >
               Create account
-            </a>
+            </Link>
           </div>
         </div>
       </Modal.Body>
