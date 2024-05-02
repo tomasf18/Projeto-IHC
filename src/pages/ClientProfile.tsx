@@ -1,5 +1,7 @@
 import Footer from "../components/Footer/Footer";
 import Navbar from "../components/Navbar/Navbar";
+import UtilizadorPage from "../components/ClientPage/UtilizadorPage";
+import Marcação from "../components/ClientPage/Marcaçãotable";
 
 export default function ClientProfile() {
   return (
@@ -12,6 +14,13 @@ export default function ClientProfile() {
         >
           <div className="mb-8 mt-8">
             <span className="text-gray-900 text-4xl">Client Profile</span>
+          </div>
+          <div className="w-3/5">
+          <UtilizadorPage />
+          <p className="text-3xl mt-6">Marcações</p>
+            <div className="mt-5 mb-4">
+            <Marcação/>
+            </div>
           </div>
         </div>
         <Footer />
