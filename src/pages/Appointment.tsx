@@ -8,7 +8,9 @@ function Appointment() {
 
   return (
     <div className={`${confirmed ? 'pointer-events-none shadow-lg' : ''} z-0 flex flex-col min-h-screen`}>
-        <Navbar />
+      <div className="z-10">
+        <Navbar  />
+      </div>
             <div className="flex flex-grow bg-gray-100 justify-center items-center" style={{ paddingTop: '60.8px' }}>
               <MakeAppointment />
             </div>

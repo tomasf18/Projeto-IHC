@@ -5,6 +5,7 @@ function Summary() {
     const { currentStep, prevStep, selectedLocalization, selectedTypeOfService, selectedServiceName, selectedServicePrice, 
         selectedProfessional, selectedDate, selectedTime, setSelectedDate, setSelectedTime, setConfirmed } = useAppointmentContext();
 
+    
     const handleBackClick = () => {
         prevStep();
         setConfirmed(false);
@@ -14,6 +15,19 @@ function Summary() {
 
     const handleConfirmClick = () => {
         setConfirmed(true);
+        let userAppointment = {
+            localization: selectedLocalization,
+            typeOfService: selectedTypeOfService,
+            serviceName: selectedServiceName,
+            servicePrice: selectedServicePrice,
+            professional: selectedProfessional,
+            date: selectedDate,
+            time: selectedTime,
+        };
+
+        let userAppointments = JSON.parse(localStorage.getItem('userAppointments') || '[]');
+        userAppointments.push(userAppointment)
+        localStorage.setItem("userAppointments", JSON.stringify(userAppointments))
     };
 
     return (

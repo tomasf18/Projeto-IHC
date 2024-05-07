@@ -143,6 +143,7 @@ export const AppointmentProvider = ({ children }: { children: React.ReactNode; }
     /* ---------------------- Confirmação ---------------------- */
     const [confirmed, setConfirmed] = useState(false);
 
+
     return (
         <AppointmentContext.Provider
             value={{

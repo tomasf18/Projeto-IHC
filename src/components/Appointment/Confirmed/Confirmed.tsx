@@ -12,7 +12,7 @@ function Confirmed(){
               <p className="text-center">A sua marcação foi confirmada com sucesso. Pode agora encontrá-la no seu perfil, clicando em "Ver Marcações".</p>
               <div className="flex flex-row justify-around w-full mt-4">
                   <Link to="/" ><Button color="blue">Back to Home</Button></Link>
-                  <Link to="/profile" ><Button color="success">Ver Marcações</Button></Link>
+                  <Link to="/client" ><Button color="success">Ver Marcações</Button></Link>
               </div>
           </div>
         </div>
