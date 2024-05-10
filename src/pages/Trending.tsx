@@ -1,8 +1,8 @@
 import Navbar from "../components/Navbar/Navbar";
 import Footer from "../components/Footer/Footer";
-import HairpageM from "../components/trends/HairrankingpageM";
-import HairpageF from "../components/trends/HairrankingpageF";
-import Buttongroup from "../components/trends/Buttongroup";
+import HairpageM from "../components/Trends/HairrankingpageM";
+import HairpageF from "../components/Trends/HairrankingpageF";
+import Buttongroup from "../components/Trends/Buttongroup";
 import { SetStateAction, useState } from "react";
 
 export default function Trending() {
@@ -22,8 +22,8 @@ export default function Trending() {
           className="flex-grow bg-gray-100 pl-8 pr-8"
           style={{ paddingTop: "60.8px" }}
         >
-          <p className="text-5xl text-center mt-5">Trending Haircuts</p>
-          <div className="h-20"></div>
+          <p className="text-5xl mt-8 ml-10">Trending Haircuts</p>
+          
           <div className="flex  justify-center">
             <Buttongroup
               buttonNumber={selectedButton}

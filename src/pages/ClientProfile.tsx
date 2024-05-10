@@ -1,7 +1,7 @@
 import Footer from "../components/Footer/Footer";
 import Navbar from "../components/Navbar/Navbar";
 import UtilizadorPage from "../components/ClientPage/UtilizadorPage";
-import Marcação from "../components/ClientPage/Marcaçãotable";
+import Marcação from "../components/ClientPage/MarcaçõesClientes";
 
 export default function ClientProfile() {
   const jsArray = localStorage.getItem("userAppointments") || [];
@@ -19,7 +19,7 @@ export default function ClientProfile() {
           <div className="w-">
           <UtilizadorPage />
           {jsArray.length > 0 && (
-          <><p className="text-3xl mt-6">Marcações</p><div className="mt-5 mb-4">
+          <><p className="text-3xl mt-6">Appointments</p><div className="mt-5 mb-4">
                 <Marcação />
               </div></>)}
           </div>

@@ -1,113 +1,84 @@
-
-
+import { Card } from "flowbite-react";
 import { useUser } from "../../contexts/UserContext";
 
-
 export default function UtilizadorPage() {
-  const { user}=useUser();
+  const { user } = useUser();
   return (
-    <div className="mt-5 ml-20">
-      <form>
-        <div className="grid grid-cols-2 gap-5">
-          <label>Primerio Nome</label>
-          <label>Sobrenome</label>
-          <div>
-            <input
-              id="Nome"
-              type="text"
-              placeholder={user?.email.split("@")[0]}
-              className="shadow appearance-none border rounded  ml-5  text-gray-700 focus:outline-none focus:shadow-outline w-4/5"
-              readOnly
-            />
-          </div>
-          <div>
-            <input
-              id="Sobrenome"
-              type="text"
-              placeholder="de onde"
-              className="shadow appearance-none border rounded ml-5  text-gray-700 focus:outline-none focus:shadow-outline w-4/5"
-              readOnly
-            />
-          </div>
-        </div>
-        
-        <div className="grid grid-cols-2 gap-5 mt-5">
-          <label> Data de nascimento</label>
-        <label> Número de identificação fiscal</label>
-          <div>
-            <input
-              className="shadow appearance-none border rounded  py-2 px-3 ml-5 text-gray-700 focus:outline-none focus:shadow-outline w-1/5"
-              id="birth-date"
-              type="text"
-              readOnly
-              placeholder="10/20/10"
-            />
-          </div>
-          <div>
-            <input
-              id="NIF"
-              type="text"
-              placeholder="48837619"
-              className="shadow appearance-none border rounded  py-2 px-3 ml-5  text-gray-700 focus:outline-none focus:shadow-outline w-2/5"
-              readOnly
-            />
-          </div>
-        </div>
-        
-        <div className="grid grid-cols-2 gap-5 mt-5">
-          <label>Morada</label>
-        <label>Número de telemovel</label>
-          <div>
-            <input
-              id="Nome"
-              type="text"
-              placeholder="Rua Fracno de Something portaº 34"
-              className="shadow appearance-none border rounded  py-2 px-3 ml-5  text-gray-700 focus:outline-none focus:shadow-outline w-4/5"
-              readOnly
-            />
-          </div>
-          <div>
-            <input
-              id="telefone"
-              type="text"
-              placeholder=" 967453289"
-              className="shadow appearance-none border rounded  py-2 px-3 ml-5  text-gray-700 focus:outline-none focus:shadow-outline w-2/5"
-              readOnly
-            />
-          </div>
-        </div>
-        
-        <div className="grid grid-cols-2 gap-5 mt-5">
-          <label>Email</label>
-          <label></label>
-          <div>
-            <input
-              id="Email"
-              type="text"
-              placeholder={user?.email}
-              className="shadow appearance-none border rounded  py-2 px-3 ml-5  text-gray-700 focus:outline-none focus:shadow-outline 3/5"
-              readOnly
-            />
-          </div>
-          <div>
-            <button
-              id="alterar informações"
-              className="bg-gray-400 hover:bg-gray-500 text-white font-bold py-2 px-4 mt-4 ml-40 rounded focus:outline-none focus:shadow-outline m-2"
-              //onClick={handleLogin}
-            >
-              Alterar informação
-            </button>
-            <button
-              id="confirmar alterações"
-              type="submit"
-              className="bg-gray-400 hover:bg-gray-500 text-white font-bold py-2 px-4 mt-8 ml-40 rounded focus:outline-none focus:shadow-outline m-2 hidden"
-              //onClick={handleLogin}
-            >
-              Alterar informação
-            </button>
+    <Card className=" flex-center ">
+      
+        <div className="xl:w-[90%] lg:w-[90%] md:w-[90%] sm:w-[92%] xs:w-[90%] mx-auto flex flex-col gap-4 items-center relative ">
+          <div className="w-full my-auto py-6 flex flex-col justify-center gap-2">
+            <div className="w-full flex sm:flex-row xs:flex-col gap-2 justify-center">
+              <div className="w-full">
+                <dl className="text-gray-900 divide-y divide-gray-200 dark:text-white dark:divide-gray-700">
+                  <div className="flex flex-col pb-3">
+                    <dt className="mb-1 text-gray-500 md:text-lg dark:text-gray-400">
+                      First Name
+                    </dt>
+                    <dd className="text-lg font-semibold"> <i className="fa-solid fa-pen  justify-end mr-4"></i>{user?.email.split("@")[0]}
+                    
+                   </dd>
+                  </div>
+                  <div className="flex flex-col py-3">
+                    <dt className="mb-1 text-gray-500 md:text-lg dark:text-gray-400">
+                     Last Name
+                    </dt>
+                    <dd className="text-lg font-semibold"> <i className="fa-solid fa-pen  justify-end mr-4"></i>Abera</dd>
+                  </div>
+                  <div className="flex flex-col py-3">
+                    <dt className="mb-1 text-gray-500 md:text-lg dark:text-gray-400">
+                      Date of Birth
+                    </dt>
+                    <dd className="text-lg font-semibold"> <i className="fa-solid fa-pen  justify-end mr-4"></i>28/01/2004</dd>
+                  </div>
+                  <div className="flex flex-col py-3">
+                    <dt className="mb-1 text-gray-500 md:text-lg dark:text-gray-400">
+                      Password
+                    </dt>
+                    <dd className="text-lg font-semibold"> <i className="fa-solid fa-pen  justify-end mr-4"></i>************</dd>
+                  </div>
+                </dl>
+              </div>
+
+              <div className="w-full">
+                <dl className="text-gray-900 divide-y divide-gray-200 dark:text-white dark:divide-gray-700">
+                  <div className="flex flex-col pb-3">
+                    <dt className="mb-1 text-gray-500 md:text-lg dark:text-gray-400">
+                      Address
+                    </dt>
+                    <dd className="text-lg font-semibold">
+                    <i className="fa-solid fa-pen  justify-end mr-4"></i>Universidade de Aveiro, 3810-193 Aveiro
+                    </dd>
+                  </div>
+
+                  <div className="flex flex-col py-3">
+                    <dt className="mb-1 text-gray-500 md:text-lg dark:text-gray-400">
+                      Cellphone Number 
+                    </dt>
+                    <dd className="text-lg font-semibold"> <i className="fa-solid fa-pen  justify-end mr-4"></i>964487454</dd>
+                  </div>
+                  <div className="flex flex-col py-3">
+                    <dt className="mb-1 text-gray-500 md:text-lg dark:text-gray-400">
+                      Email
+                    </dt>
+                    <dd className="text-lg font-semibold">
+                    <i className="fa-solid fa-pen  justify-end mr-4"></i>{user?.email}
+                    </dd>
+                  </div>
+                  <div className="flex flex-col py-3">
+                    <dt className="mb-1 text-gray-500 md:text-lg dark:text-gray-400">
+                      NIF
+                    </dt>
+                    <dd className="text-lg font-semibold">
+                    <i className="fa-solid fa-pen  justify-end mr-4"></i> 57364868
+                    </dd>
+                  </div>
+                </dl>
+              </div>
+            </div>
           </div>
         </div>
-      </form>
-    </div>
+     </Card> 
+    
   );
 }
