@@ -1,15 +1,21 @@
+
+
+import { useUser } from "../../contexts/UserContext";
+
+
 export default function UtilizadorPage() {
+  const { user}=useUser();
   return (
     <div className="mt-5 ml-20">
       <form>
         <div className="grid grid-cols-2 gap-5">
-          <label>Primerio nome</label>
-          <label>Sobrenome nome</label>
+          <label>Primerio Nome</label>
+          <label>Sobrenome</label>
           <div>
             <input
               id="Nome"
               type="text"
-              placeholder="Jaime"
+              placeholder={user?.email.split("@")[0]}
               className="shadow appearance-none border rounded  ml-5  text-gray-700 focus:outline-none focus:shadow-outline w-4/5"
               readOnly
             />
@@ -18,7 +24,7 @@ export default function UtilizadorPage() {
             <input
               id="Sobrenome"
               type="text"
-              placeholder=" Magalhes"
+              placeholder="de onde"
               className="shadow appearance-none border rounded ml-5  text-gray-700 focus:outline-none focus:shadow-outline w-4/5"
               readOnly
             />
@@ -78,7 +84,7 @@ export default function UtilizadorPage() {
             <input
               id="Email"
               type="text"
-              placeholder="email@email.com"
+              placeholder={user?.email}
               className="shadow appearance-none border rounded  py-2 px-3 ml-5  text-gray-700 focus:outline-none focus:shadow-outline 3/5"
               readOnly
             />

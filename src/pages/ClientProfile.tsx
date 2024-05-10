@@ -4,6 +4,7 @@ import UtilizadorPage from "../components/ClientPage/UtilizadorPage";
 import Marcação from "../components/ClientPage/Marcaçãotable";
 
 export default function ClientProfile() {
+  const jsArray = localStorage.getItem("userAppointments") || [];
   return (
     <>
       <div className="flex flex-col min-h-screen">
@@ -15,12 +16,12 @@ export default function ClientProfile() {
           <div className="mb-8 mt-8">
             <span className="text-gray-900 text-4xl">Client Profile</span>
           </div>
-          <div className="w-3/5">
+          <div className="w-">
           <UtilizadorPage />
-          <p className="text-3xl mt-6">Marcações</p>
-            <div className="mt-5 mb-4">
-            <Marcação/>
-            </div>
+          {jsArray.length > 0 && (
+          <><p className="text-3xl mt-6">Marcações</p><div className="mt-5 mb-4">
+                <Marcação />
+              </div></>)}
           </div>
         </div>
         <Footer />

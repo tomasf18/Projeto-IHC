@@ -15,7 +15,9 @@ export default function Trending() {
   return (
     <>
       <div className="flex flex-col min-h-screen">
-        <Navbar />
+        <div className="z-10">
+          <Navbar />
+        </div>
         <div
           className="flex-grow bg-gray-100 pl-8 pr-8"
           style={{ paddingTop: "60.8px" }}
@@ -28,7 +30,7 @@ export default function Trending() {
               onButtonClick={handleButtonClick}
             />
           </div>
-          <div className="h-10"></div>
+          <div className="h-10 -z-50"></div>
           <div id="masculino" className={`flex justify-center ${selectedButton === 1 ? '' : 'hidden'}`}>
             <HairpageM />
           </div>
