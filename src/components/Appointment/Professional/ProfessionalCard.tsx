@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom";
 import { useAppointmentContext } from "../../../contexts/AppointmentContext";
 
 // Item.tsx
@@ -9,7 +10,7 @@ function ProfessionalCard({ cardImage, name }: { cardImage: string, name: string
     };
 
     return (
-        <div onClick={handleProfessionalSelection} className={`flex  flex-col rounded-xl border border-gray-200 shadow-md h-60 w-52 m-2 hover:cursor-pointer hover:bg-slate-300 ${(selectedProfessional === name) ? 'bg-slate-500 hover:bg-slate-500' : 'bg-white '}`}>
+        <div onClick={handleProfessionalSelection} className={`flex rounded-xl border border-gray-200 shadow-md flex-col h-60 w-52 m-2 hover:cursor-pointer hover:text-white hover:shadow-lg focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium text-center hover:-translate-y-1 transition-all duration-300 ease-in-out ${(selectedProfessional === name) ? 'bg-cyan-700 text-white' : 'bg-white hover:bg-cyan-500'}`}>
             <p className="mt-2 text-center text-sm font-medium text-black">{name}</p>
             <img src={cardImage} alt={name} className="h-32 mx-2 mt-2 object-cover" />
             <div className="flex h-full flex-col justify-center items-center mt-3">
@@ -35,7 +36,7 @@ function ProfessionalCard({ cardImage, name }: { cardImage: string, name: string
                         </path>
                     </svg>
                 </div>
-                <a href="#" className="text-center w-20 text-xxs font-medium underline hover:no-underline">Ver Detalhes do Profissional</a>
+                <Link to="/ProfessionalProfile" className="text-center w-full pt-2 text-xs font-medium underline hover:no-underline">View Professional's Details</Link>
             </div>
         </div>
     );

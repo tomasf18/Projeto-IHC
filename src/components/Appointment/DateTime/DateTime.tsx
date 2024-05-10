@@ -16,34 +16,39 @@ function DateTime() {
 
     return (
         <>
-            <div className="grid grid-rows-6 row-span-6 h-full border-r-4 border-slate-600">
+            <div className="row-span-6 grid grid-rows-6 h-full border-e-2 border-black">
                 <Indicators currentStep={currentStep} />
-                <div className="grid grid-rows-6 row-span-5 border-2 border-stone-950">
-                    <h1 className="row-span-5 flex justify-center items-center text-center">
-                        Selecione a data e a hora que deseja
+                <div className="row-span-4 flex justify-center items-center text-center">
+                    <h1 className="p-2">
+                        <i className="fa-solid fa-circle-info pr-2"></i> Select the date and then the time that you prefer. Red time slots are already taken.
                     </h1>
-                    <span className="row-span-1 flex justify-center items-center text-blue-600 hover:text-blue-700 hover:underline">
-                        <a href="/ajuda.html">Precisa de ajuda?</a>
-                    </span>
                 </div>
+                <span className="row-span-1 flex justify-center items-center text-blue-600 hover:text-blue-700 hover:underline">
+                    <a href="/ajuda.html">Need Help?</a>
+                </span>
             </div>
 
-            <div className="flex justify-center items-center col-span-5 h-full border-l-4 border-b-4 border-amber-400">
-                <h1 className="text-5xl">Seleção de Data & Hora</h1>
+            <div className="flex justify-center items-center col-span-5 h-full border-b-2 border-black">
+                <h1 className="text-5xl">Date & Time Selection</h1>
             </div>
 
-            <div className="row-span-5 col-span-5 h-full relative border-l-4 border-4 border-red-600">
+            <div className="row-span-4 col-span-5 h-full relative flex flex-col">
                 <DateComponent />
-
-                <div className="absolute bottom-0 inset-x-0 border-4 border-yellow-900 p-4 grid grid-cols-8 grid-rows-1">
-                    <button className="mr-2 col-span-2" onClick={handleBackClick}>
-                        Voltar
-                    </button>
+            </div>
+            <div className="row-span-1 col-span-5 border-t-2 h-full w-full grid grid-cols-8 grid-rows-1">
+                    <div className="w-full my-8 md:col-span-2 flex items-center justify-center">
+                        <button className="w-8/12 h-full border-2 text-red-500 hover:text-white bg-white hover:bg-red-700 hover:shadow-lg font-medium rounded-lg text-sm
+                                                transition-all duration-300 ease-in-out" onClick={handleBackClick}> 
+                                                    Back
+                        </button>
+                    </div>
                     <div className="col-span-4"></div>
-                    <button className="ml-2 col-span-2 pr-2" onClick={(selectedDate !== "" && selectedTime !== "") ? nextStep : undefined}>
-                        Próximo
-                    </button>
-                </div>
+                    <div className="w-full my-8 md:col-span-2 flex items-center justify-center">
+                        <button className={`w-8/12 h-full text-white bg-cyan-700 hover:bg-cyan-500 hover:shadow-lg font-medium rounded-lg text-sm
+                                            transition-all duration-300 ease-in-out ${(selectedDate === "" || selectedTime === "") ? 'hover:cursor-not-allowed' : ''}`} onClick={(selectedDate === "" || selectedTime === "") ? undefined : nextStep}> 
+                                                    Next
+                        </button>
+                    </div>
             </div>
         </>
     );

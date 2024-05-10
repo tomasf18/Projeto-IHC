@@ -11,7 +11,7 @@ function MakeAppointment() {
   const { currentStep, confirmed } = useAppointmentContext();
 
   return (
-    <div id="container" className='relative grid grid-rows-6 grid-cols-10 md:grid-cols-6 bg-white border-2 border-gray-900 rounded-lg w-full lg:w-10/12 min-h-144 items-center'>
+    <div id="container" className='relative grid grid-rows-6 grid-cols-10 md:grid-cols-6 bg-white border-2 border-gray-900 rounded-lg w-full lg:w-8/12 min-h-160 items-center'>
       {currentStep === 1 && <Localization />}
       {currentStep === 2 && <TypeOfService />}
       {currentStep === 3 && <Service />}

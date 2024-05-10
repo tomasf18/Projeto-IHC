@@ -12,7 +12,7 @@ interface AppointmentContextProps {
     selectedDistrict: string;
     selectedLocalization: string;
     isDropdownHidden: boolean;
-    cabeleireirosPorDistrito: { [key: string]: string };
+    establishmentsPerDistrict: { [key: string]: string };
     selectedTypeOfService: string;
     isManSelected: boolean;
     typeOfServiceItems: { text: string; id: number }[];
@@ -56,7 +56,7 @@ export const AppointmentProvider = ({ children }: { children: React.ReactNode; }
 
     const reset = useCallback(() => {
         setCurrentStep(1);
-        setSelectedDistrict("Escolha um distrito");
+        setSelectedDistrict("--- Select a District ---");
         setSelectedLocalization("");
         setIsDropdownHidden(false);
         setSelectedTypeOfService("");
@@ -70,13 +70,13 @@ export const AppointmentProvider = ({ children }: { children: React.ReactNode; }
 
     /* ---------------------- Localização ---------------------- */
     const [selectedDistrict, setSelectedDistrict] = useState(
-        "Escolha um distrito"
+        "--- Select a District ---"
     );
     const [selectedLocalization, setSelectedLocalization] = useState("");
     const [isDropdownHidden, setIsDropdownHidden] = useState(false); // Add the missing state variable and its setter function
 
-    const cabeleireirosPorDistrito: { [key: string]: string } = {
-        "Escolha um distrito": "",
+    const establishmentsPerDistrict: { [key: string]: string } = {
+        "--- Select a District ---": "",
         Aveiro: "Champions+barber+shop",
         Braga: "STUDIO+MZ",
         Coimbra: "Barbearia+Adónis",
@@ -92,7 +92,7 @@ export const AppointmentProvider = ({ children }: { children: React.ReactNode; }
 
     // Atualiza o nome do distrito selecionado no dropdown sempre que o distrito é alterado
     useEffect(() => {
-        setSelectedLocalization(cabeleireirosPorDistrito[selectedDistrict].replace(/\+/g, " ") + ", " + selectedDistrict);}, 
+        setSelectedLocalization(establishmentsPerDistrict[selectedDistrict].replace(/\+/g, " ") + ", " + selectedDistrict);}, 
         [selectedDistrict]);    // O useEffect é executado sempre que o distrito selecionado é alterado (selectedDistrict, ou seja, o que é passado como segundo argumento ao useEffect)
                                 // O primeiro argumento é a função que é executada sempre que o distrito selecionado é alterado
 
@@ -106,19 +106,19 @@ export const AppointmentProvider = ({ children }: { children: React.ReactNode; }
     const [isManSelected, setIsManSelected] = useState(true);
     const typeOfServiceItems = isManSelected
         ? [
-              { text: "Cabelo", id: 1 },
-              { text: "Barba", id: 2 },
-              { text: "Sobrancelhas", id: 3 },
-              { text: "Pele", id: 4 },
-          ]
+            { text: "Hair", id: 1 },
+            { text: "Beard", id: 2 },
+            { text: "Eyebrows", id: 3 },
+            { text: "Skin", id: 4 },
+        ]
         : [
-              { text: "Cabelo", id: 1 },
-              { text: "Sobrancelhas", id: 2 },
-              { text: "Pele", id: 3 },
-              { text: "Relaxamento", id: 4 },
-              { text: "Manicure", id: 5 },
-              { text: "Pedicure", id: 6 },
-          ];
+            { text: "Hair", id: 1 },
+            { text: "Eyebrows", id: 2 },
+            { text: "Skin", id: 3 },
+            { text: "Relaxation", id: 4 },
+            { text: "Manicure", id: 5 },
+            { text: "Pedicure", id: 6 },
+        ];
 
     const handleSexChange = (isManSelected: boolean) => {
         setIsManSelected(isManSelected);
@@ -151,7 +151,7 @@ export const AppointmentProvider = ({ children }: { children: React.ReactNode; }
                 selectedDistrict,
                 selectedLocalization,
                 isDropdownHidden,
-                cabeleireirosPorDistrito,
+                establishmentsPerDistrict,
                 selectedTypeOfService,
                 isManSelected,
                 typeOfServiceItems,

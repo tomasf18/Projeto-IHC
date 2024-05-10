@@ -13,7 +13,7 @@ const RenderProfessioals = () => {
     };
 
     return (
-        <div style={{ maxHeight: '388px' }} className="border-4 border-violet-800 flex-grow overflow-auto grid grid-cols-3 justify-items-center">
+        <div style={{ maxHeight: '424px' }} className="flex-grow overflow-auto grid grid-cols-3 justify-items-center">
             {Object.keys(professionalsInfo).map((key) => (
                 <Item key={key} cardImage={`https://via.placeholder.com/150`} name={professionalsInfo[key]} />
             ))}

@@ -4,90 +4,90 @@ import ServiceItem from "./ServiceItem";
 const SelectedTypeOfService = () => {
     const { isManSelected, selectedTypeOfService } = useAppointmentContext();
 
-    let sexo = isManSelected ? "Homem" : "Mulher";
+    let sexo = isManSelected ? "Man" : "Woman";
     let tipoDeServico = selectedTypeOfService;
 
     // Obtém os itens de serviço com base no sexo e tipo de serviço selecionados
-    const precoPorTipoDeServico: { [key: string]: { [key: string]: { nome: string, preco: number, id: number }[] } } = {
-        Homem: {
-            "Cabelo": [
-                { nome: "Mullet", preco: 20, id: 1 },
-                { nome: "Fade", preco: 25, id: 2 },
-                { nome: "Undercut", preco: 30, id: 3 },
-                { nome: "Buzz Cut", preco: 15, id: 4 },
-                { nome: "Quiff", preco: 25, id: 5 },
-                { nome: "Pompadour", preco: 30, id: 6 },
+    const priceByServiceType: { [key: string]: { [key: string]: { name: string, price: number, id: number }[] } } = {
+        Man: {
+            "Hair": [
+                { name: "Mullet", price: 20, id: 1 },
+                { name: "Fade", price: 25, id: 2 },
+                { name: "Undercut", price: 30, id: 3 },
+                { name: "Buzz Cut", price: 15, id: 4 },
+                { name: "Quiff", price: 25, id: 5 },
+                { name: "Pompadour", price: 30, id: 6 },
             ],
-            "Barba": [
-                { nome: "Barba Simples", preco: 15, id: 1 },
-                { nome: "Barba Completa", preco: 20, id: 2 },
-                { nome: "Barba Designer", preco: 25, id: 3 },
-                { nome: "Barba Fade", preco: 30, id: 4 },
+            "Beard": [
+                { name: "Simple Beard", price: 15, id: 1 },
+                { name: "Full Beard", price: 20, id: 2 },
+                { name: "Designer Beard", price: 25, id: 3 },
+                { name: "Fade Beard", price: 30, id: 4 },
             ],
-            "Sobrancelhas": [
-                { nome: "Design de Sobrancelhas", preco: 10, id: 1},
-                { nome: "Tintura de Sobrancelhas", preco: 15, id: 2},
-                { nome: "Extensão de Pestanas", preco: 20, id: 3},
-                { nome: "Permanente de Pestanas", preco: 25, id: 4},
+            "Eyebrows": [
+                { name: "Eyebrow Design", price: 10, id: 1},
+                { name: "Eyebrow Tinting", price: 15, id: 2},
+                { name: "Eyelash Extensions", price: 20, id: 3},
+                { name: "Eyelash Perm", price: 25, id: 4},
             ],
-            "Pele": [
-                { nome: "Limpeza de Pele", preco: 35, id: 1 },
-                { nome: "Tratamento de Acne", preco: 40, id: 2 },
-                { nome: "Tratamento de Rugas", preco: 45, id: 3 },
-                { nome: "Tratamento de Manchas", preco: 50, id: 4 },
+            "Skin": [
+                { name: "Skin Cleaning", price: 35, id: 1 },
+                { name: "Acne Treatment", price: 40, id: 2 },
+                { name: "Wrinkle Treatment", price: 45, id: 3 },
+                { name: "Spot Treatment", price: 50, id: 4 },
             ],
         },
-        Mulher: {
-            "Cabelo": [
-                { nome: "Corte de Cabelo", preco: 30, id: 1 },
-                { nome: "Coloração", preco: 40, id: 2 },
-                { nome: "Madeixas", preco: 45, id: 3 },
-                { nome: "Permanente", preco: 50, id: 4 },
-                { nome: "Tratamento Capilar", preco: 30, id: 5 },
-                { nome: "Brushing", preco: 20, id: 6 },
-                { nome: "Extensões", preco: 60, id: 7 },
-                { nome: "Alisamento", preco: 50, id: 8 },
+        Woman: {
+            "Hair": [
+                { name: "Haircut", price: 30, id: 1 },
+                { name: "Coloring", price: 40, id: 2 },
+                { name: "Highlights", price: 45, id: 3 },
+                { name: "Perm", price: 50, id: 4 },
+                { name: "Hair Treatment", price: 30, id: 5 },
+                { name: "Brushing", price: 20, id: 6 },
+                { name: "Extensions", price: 60, id: 7 },
+                { name: "Straightening", price: 50, id: 8 },
             ],
-            "Sobrancelhas": [
-                { nome: "Design de Sobrancelhas", preco: 10, id: 1},
-                { nome: "Tintura de Sobrancelhas", preco: 15, id: 2},
-                { nome: "Extensão de Pestanas", preco: 20, id: 3},
-                { nome: "Permanente de Pestanas", preco: 25, id: 4},
+            "Eyebrows": [
+                { name: "Eyebrow Design", price: 10, id: 1},
+                { name: "Eyebrow Tinting", price: 15, id: 2},
+                { name: "Eyelash Extensions", price: 20, id: 3},
+                { name: "Eyelash Perm", price: 25, id: 4},
             ],
-            "Pele": [
-                { nome: "Limpeza de Pele", preco: 35, id: 1},
-                { nome: "Tratamento de Acne", preco: 40, id: 2},
-                { nome: "Tratamento de Rugas", preco: 45, id: 3},
-                { nome: "Tratamento de Manchas", preco: 50, id: 4},
+            "Skin": [
+                { name: "Skin Cleaning", price: 35, id: 1},
+                { name: "Acne Treatment", price: 40, id: 2},
+                { name: "Wrinkle Treatment", price: 45, id: 3},
+                { name: "Spot Treatment", price: 50, id: 4},
             ],
-            "Relaxamento": [
-                { nome: "Massagem Relaxante", preco: 45, id: 1 },
-                { nome: "Tratamento Facial", preco: 50, id: 2 },
-                { nome: "Tratamento Corporal", preco: 55, id: 3 },
-                { nome: "Spa", preco: 60, id: 4 },
+            "Relaxation": [
+                { name: "Relaxing Massage", price: 45, id: 1 },
+                { name: "Facial Treatment", price: 50, id: 2 },
+                { name: "Body Treatment", price: 55, id: 3 },
+                { name: "Spa", price: 60, id: 4 },
             ],
             "Manicure": [
-                { nome: "Manicure Simples", preco: 15, id: 1 },
-                { nome: "Manicure Francesa", preco: 20, id: 2 },
-                { nome: "Manicure Gel", preco: 25, id: 3 },
-                { nome: "Manicure Spa", preco: 30, id: 4 },
+                { name: "Simple Manicure", price: 15, id: 1 },
+                { name: "French Manicure", price: 20, id: 2 },
+                { name: "Gel Manicure", price: 25, id: 3 },
+                { name: "Spa Manicure", price: 30, id: 4 },
             ],
             "Pedicure": [
-                { nome: "Pedicure Simples", preco: 20, id: 1 },
-                { nome: "Pedicure Francesa", preco: 25, id: 2 },
-                { nome: "Pedicure Gel", preco: 30, id: 3 },
-                { nome: "Spa para Pés", preco: 30, id: 4},
+                { name: "Simple Pedicure", price: 20, id: 1 },
+                { name: "French Pedicure", price: 25, id: 2 },
+                { name: "Gel Pedicure", price: 30, id: 3 },
+                { name: "Foot Spa", price: 30, id: 4},
             ],
         },
     };
 
 
-    const servicos = precoPorTipoDeServico[sexo][tipoDeServico];
+    const services = priceByServiceType[sexo][tipoDeServico];
 
     return (
-        <div style={{ maxHeight: '388px' }} className="border-4 border-violet-800 flex-grow overflow-auto grid grid-cols-3 justify-items-center">
-            {servicos.map((servico: { nome: string, preco: number, id: number }) => (
-                <ServiceItem key={servico.nome} cardImage={`https://via.placeholder.com/150`} text={servico.nome} preco={servico.preco} />
+        <div style={{ maxHeight: '424px' }} className="flex-grow overflow-auto grid grid-cols-3 justify-items-center">
+            {services.map((service: { name: string, price: number, id: number }) => (
+                <ServiceItem key={service.name} cardImage={`https://via.placeholder.com/150`} text={service.name} preco={service.price} />
             ))}
         </div>
     );
