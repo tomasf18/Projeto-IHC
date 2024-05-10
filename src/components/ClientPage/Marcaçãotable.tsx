@@ -77,18 +77,45 @@ export default function Component() {
     setSelectedTime(""); // Reset time selection
   }
 
+
+  // `map` over the first object in the array
+// and get an array of keys and add them
+// to TH elements
+function getHeadings(data) {
+  return Object.keys(data[0]).map(key => {
+    return <th>{key}</th>;
+  });
+}
+
+// `map` over the data to return
+// row data, passing in each mapped object
+// to `getCells`
+function getRows(data) {
+  return data.map(obj => {
+    return <tr>{getCells(obj)}</tr>;
+  });
+}
+
+// Return an array of cell data using the
+// values of each object
+function getCells(obj) {
+  return Object.values(obj).map(value => {
+    return <td>{value}</td>;
+  });
+}
+
   return (
     <div className="overflow-x-auto ml-20">
       {jsArray.length > 0 && (
         <Table>
           <Table.Head>
-            <tr>
+            
               {keys.map((item, idx) => (
-                <Table.HeadCell className="text-center " key={idx}>
+                <Table.HeadCell className="text-center  border-2" key={idx}>
                   {item}
                 </Table.HeadCell>
               ))}
-            </tr>
+            
           </Table.Head>
           <Table.Body className="display:inline-block ">
             {data.map(
@@ -108,8 +135,9 @@ export default function Component() {
               ) => (
                 <tr key={idx}>
                   
+                  
                   {keys.map((key, idx) => (
-                    <Table.Cell key={idx}>{item[key]}</Table.Cell>
+                    <Table.Cell className="text-center  border-2" key={idx}>{item[key]}</Table.Cell>
                     
                   ))}
                   
