@@ -32,7 +32,15 @@ function App() {
         <Route path="/help" element={<Help />} />
         <Route path="/appointments" element={<Appointments />} />
         <Route path="/professional" element={<ProfessionalProfile />} />
-        <Route path="/client" element={<ClientProfile />} />
+        
+        <Route
+          path="/client"
+          element={
+            <AppointmentProvider>
+              <ClientProfile />
+            </AppointmentProvider>
+          }
+        />
         <Route path="/register" element={<Register />} />
       </Routes>
     </BrowserRouter>
