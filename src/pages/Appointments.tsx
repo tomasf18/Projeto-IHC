@@ -7,15 +7,17 @@ export default function Appointments() {
   return (
     <>
       <div className="flex flex-col min-h-screen">
-        <Navbar />
+        <div className="z-10">
+          <Navbar />
+        </div>
         <div
-          className="flex-grow bg-gray-100 pl-8 pr-8"
+          className="flex-grow bg-gray-100 pl-40 pr-40 mt-8"
           style={{ paddingTop: "60.8px" }}
         >
-          <div className="mb-8 mt-8">
-            <span className="text-gray-900 text-4xl">Appointments</span>
+          <div className="bg-white rounded-xl p-8 mb-8">
+            <h2 className="text-4xl font-semibold mb-4">Appointments</h2>
+            <AppointmentTabs tabDays={tabDays()} />
           </div>
-          <AppointmentTabs tabDays={tabDays()} />
         </div>
         <Footer />
       </div>

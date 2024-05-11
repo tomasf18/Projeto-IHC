@@ -129,71 +129,65 @@ export default function Component() {
                   </Table.Cell>
                   <Modal
                     show={isModalOpen2}
-                    size="lg"
+                    size="6xl"
                     popup
                     onClose={() => setIsModalOpen2(false)}
                     className=""
                   >
                     <Modal.Header />
                     <Modal.Body>
-                      <div className="grid grid-rows-6 row-span-6 h-full border-r-4 border-slate-600">
-                        <div className="grid grid-rows-6 row-span-5 border-2 border-stone-950">
-                          <h1 className="row-span-5 flex justify-center items-center text-center">
-                            Selecione a data e a hora que deseja
-                          </h1>
-                          <span className="row-span-1 flex justify-center items-center text-blue-600 hover:text-blue-700 hover:underline">
-                            <a href="/ajuda.html">Precisa de ajuda?</a>
-                          </span>
-                        </div>
+                      <div className="flex justify-center items-center col-span-5 h-full border-b-2 border-black">
+                        <h1 className="text-5xl">Date & Time Selection</h1>
                       </div>
 
-                      <div className="flex justify-center items-center col-span-5 h-full border-l-4 border-b-4 border-amber-400">
-                        <h1 className="text-5xl">Seleção de Data & Hora</h1>
-                      </div>
-
-                      <div className="row-span-5 col-span-5 h-full relative border-l-4 border-4 border-red-600">
+                      <div className="row-span-4 col-span-5 h-full relative flex flex-col">
                         <DateComponent />
+                      </div>
 
-                        <div className="absolute bottom-0 inset-x-0 border-4 border-yellow-900 p-4 grid grid-cols-8 grid-rows-1">
-                          <div className="col-span-4"></div>
+                      <div className="row-span-1 col-span-5 border-t-2 h-full w-full grid grid-cols-8 grid-rows-1">
+                        <div className="w-full my-8 md:col-span-2 flex items-center justify-center">
+                          
+                        </div>
+                        <div className="col-span-4"></div>
+                        <div className="w-full my-3 md:col-span-2 flex items-center justify-center">
                           <button
-                            className="ml-2 col-span-2 pr-2"
+                            className="w-8/12 h-full text-white bg-cyan-700 hover:bg-cyan-500 hover:shadow-lg font-medium rounded-lg text-sm
+                            transition-all duration-300 ease-in-out"
                             onClick={() => setIsModalOpen3(true)}
                           >
-                            Alterar
+                            Edit
                           </button>
                           <Modal
-                            show={isModalOpen3}
-                            size="lg"
-                            popup
-                            onClose={() => setIsModalOpen3(false)}
-                            className=""
-                          >
-                            <Modal.Header />
-                            <Modal.Body>
-                              <div className="space-y-6">
-                                <h3 className="text-xl font-medium text-gray-900 dark:text-white text-center">
-                                  Pretende alterar a marcação para{" "}
-                                  {selectedDate},{selectedTime}?
-                                </h3>
+                          show={isModalOpen3}
+                          size="lg"
+                          popup
+                          onClose={() => setIsModalOpen3(false)}
+                          className=""
+                        >
+                          <Modal.Header />
+                          <Modal.Body>
+                            <div className="space-y-6">
+                              <h3 className="text-xl font-medium text-gray-900 dark:text-white text-center">
+                                Do you want to change your appointment to {selectedDate} at {selectedTime}?
+                              </h3>
 
-                                <div className="grid grid-cols-2 gap-20">
-                                  <Button
-                                    onClick={() => setIsModalOpen3(false)}
-                                    color="blue"
-                                  >
-                                    Não
-                                  </Button>
-                                  <Button
-                                    onClick={() => handleeditar(item)}
-                                    color="red"
-                                  >
-                                    Sim
-                                  </Button>
-                                </div>
+                              <div className="grid grid-cols-2 gap-20">
+                                <Button
+                                  onClick={() => setIsModalOpen3(false)}
+                                  color="blue"
+                                >
+                                  No
+                                </Button>
+                                <Button
+                                  onClick={() => handleeditar(item)}
+                                  color="red"
+                                >
+                                  Yes
+                                </Button>
                               </div>
-                            </Modal.Body>
-                          </Modal>
+                            </div>
+                          </Modal.Body>
+                        </Modal>
                         </div>
                       </div>
                     </Modal.Body>
@@ -216,7 +210,7 @@ export default function Component() {
                       <Modal.Body>
                         <div className="space-y-6">
                           <h3 className="text-xl font-medium text-gray-900 dark:text-white text-center">
-                            Pretende cancelar Marcação?
+                            Do you want to cancel your appointment?
                           </h3>
 
                           <div className="grid grid-cols-2 gap-20">
@@ -224,13 +218,13 @@ export default function Component() {
                               onClick={() => setIsModalOpen(false)}
                               color="blue"
                             >
-                              Não
+                              No
                             </Button>
                             <Button
                               onClick={() => handledelete(item)}
                               color="red"
                             >
-                              Sim
+                              Yes
                             </Button>
                           </div>
                         </div>

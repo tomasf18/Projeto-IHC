@@ -18,15 +18,17 @@ export default function Component() {
             <div>
               <Footer.Title title="about" />
               <Footer.LinkGroup col>
-                <Footer.Link href="#">Flowbite</Footer.Link>
-                <Footer.Link href="#">Tailwind CSS</Footer.Link>
+                <Footer.Link href="#">Our Story</Footer.Link>
+                <Footer.Link href="#">Meet the Team</Footer.Link>
+                <Footer.Link href="#">Partnerships</Footer.Link>
               </Footer.LinkGroup>
             </div>
             <div>
-              <Footer.Title title="Follow us" />
+              <Footer.Title title="Contact us" />
               <Footer.LinkGroup col>
-                <Footer.Link href="#">Github</Footer.Link>
-                <Footer.Link href="#">Discord</Footer.Link>
+                <Footer.Link href="#">Contact Form</Footer.Link>
+                <Footer.Link href="#">contact@stylistco.com</Footer.Link>
+                <Footer.Link href="#">234629884</Footer.Link>
               </Footer.LinkGroup>
             </div>
             <div>
@@ -34,6 +36,7 @@ export default function Component() {
               <Footer.LinkGroup col>
                 <Footer.Link href="#">Privacy Policy</Footer.Link>
                 <Footer.Link href="#">Terms &amp; Conditions</Footer.Link>
+                <Footer.Link href="#">Cookie Policy</Footer.Link>
               </Footer.LinkGroup>
             </div>
           </div>

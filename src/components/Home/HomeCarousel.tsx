@@ -19,7 +19,7 @@ export default function CarouselHome() {
       } else if (window.innerWidth < 1536) {
         setHeight('800px');
       } else {
-        setHeight('900px');
+        setHeight('950px');
       }
     };
 
