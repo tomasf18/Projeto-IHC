@@ -5,6 +5,7 @@ import {
   ReactPortal,
   Key,
   useState,
+  useEffect,
 } from "react";
 import { useAppointmentContext } from "../../contexts/AppointmentContext.tsx";
 import DateComponent from "../Appointment/DateTime/DateComponent.tsx";
@@ -12,9 +13,24 @@ import DateComponent from "../Appointment/DateTime/DateComponent.tsx";
 import { Button, Modal, Table } from "flowbite-react";
 
 export default function Component() {
-  const jsArray = localStorage.getItem("userAppointments") ?? "";
+  const [jsArray, setJsArray] = useState<any[]>([]);
+  const [existsAppointment, setExistsAppointment] = useState(false);
+  
+  const updatedArray = JSON.parse(localStorage.getItem("userAppointments") ?? "");
+  console.log("ARRAY -> " + updatedArray);
+  console.log("LEN -> " + updatedArray.length);
+  useEffect(() => {
+    if (updatedArray.length > 0) {
+      setJsArray(updatedArray);
+      setExistsAppointment(true);
+    } else {
+      setExistsAppointment(false);
+    }
+  }, [updatedArray]);
 
-  const data = JSON.parse(jsArray);
+
+
+  const data = jsArray;
 
   const keys = Object.keys(data.length ? data[0] : {});
 
@@ -86,7 +102,10 @@ export default function Component() {
   }
 
   return (
-    <div className="overflow-x-auto ml-20">
+    (!existsAppointment ? (<div className="flex items-center col-span-5 h-full">
+      <h1 className="text-2xl">You have no appointments. </h1>
+    </div>) :
+    (<div className="overflow-x-auto ml-20">
       {jsArray.length > 0 && (
         <Table>
           <Table.Head>
@@ -124,7 +143,7 @@ export default function Component() {
                       className="text-green-500 justi "
                       onClick={() => setIsModalOpen2(true)}
                     >
-                      Editar
+                      Edit
                     </button>
                   </Table.Cell>
                   <Modal
@@ -151,9 +170,9 @@ export default function Component() {
                         <div className="col-span-4"></div>
                         <div className="w-full my-3 md:col-span-2 flex items-center justify-center">
                           <button
-                            className="w-8/12 h-full text-white bg-cyan-700 hover:bg-cyan-500 hover:shadow-lg font-medium rounded-lg text-sm
-                            transition-all duration-300 ease-in-out"
-                            onClick={() => setIsModalOpen3(true)}
+                            className={`w-8/12 h-full text-white bg-cyan-700 hover:bg-cyan-500 hover:shadow-lg font-medium rounded-lg text-sm
+                            transition-all duration-300 ease-in-out ${(selectedDate === "" || selectedTime === "") ? 'hover:cursor-not-allowed' : ''}`}
+                            onClick={(selectedDate === "" || selectedTime === "") ? undefined : () => setIsModalOpen3(true)}
                           >
                             Edit
                           </button>
@@ -197,7 +216,7 @@ export default function Component() {
                       className="  text-red-500"
                       onClick={() => setIsModalOpen(true)}
                     >
-                      Cancelar
+                      Cancel
                     </button>
                     <Modal
                       show={isModalOpen}
@@ -237,6 +256,6 @@ export default function Component() {
           </Table.Body>
         </Table>
       )}
-    </div>
+    </div>))
   );
 }
