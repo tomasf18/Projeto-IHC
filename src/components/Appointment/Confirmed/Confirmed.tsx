@@ -1,7 +1,12 @@
 import { Button } from "flowbite-react";
 import { Link } from "react-router-dom";
+import { useAppointmentContext } from "../../../contexts/AppointmentContext";
 
 function Confirmed(){
+    const { reset } = useAppointmentContext();
+    const handleClick = () => {
+        reset();
+    }
     return (
       <>
         <div className="fixed inset-0 bg-black opacity-50 z-5"></div>
@@ -11,8 +16,8 @@ function Confirmed(){
               <h1 className="text-3xl">Confirmado!</h1>
               <p className="text-center">A sua marcação foi confirmada com sucesso. Pode agora encontrá-la no seu perfil, clicando em "Ver Marcações".</p>
               <div className="flex flex-row justify-around w-full mt-4">
-                  <Link to="/" ><Button color="blue">Back to Home</Button></Link>
-                  <Link to="/client" ><Button color="success">Ver Marcações</Button></Link>
+                  <Link to="/" onClick={handleClick} ><Button color="blue">Back to Home</Button></Link>
+                  <Link to="/client" onClick={handleClick} ><Button color="success">Ver Marcações</Button></Link>
               </div>
           </div>
         </div>

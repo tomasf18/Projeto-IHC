@@ -8,7 +8,9 @@ export default function ClientProfile() {
   return (
     <>
       <div className="flex flex-col min-h-screen">
-        <Navbar />
+        <div className="z-10">
+          <Navbar />
+        </div>
         <div
           className="flex-grow bg-gray-100 pl-8 pr-8"
           style={{ paddingTop: "60.8px" }}
