@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { Avatar, Dropdown, Navbar, Button } from "flowbite-react";
+import { Avatar, Dropdown, Navbar } from "flowbite-react";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import LoginModal from "./LoginModal";
 import AppointmentModal from "./AppointmentModal";
@@ -112,9 +112,12 @@ export default function Component() {
             <Dropdown.Item onClick={handleLogout}>Sign out</Dropdown.Item>
           </Dropdown>
         ) : (
-          <Button onClick={() => setOpenLoginModal(true)}>Login</Button>
+          <button className="w-20 h-10 border text-cyan-700 hover:text-white bg-white hover:bg-cyan-700 hover:shadow-lg font-medium rounded-lg text-sm
+          transition-all duration-300 ease-in-out" onClick={() => setOpenLoginModal(true)}> 
+              Login
+          </button>
         )}
-        <LoginModal openModal={openLoginModal} onCloseModal={onCloseLoginModal} />
+        <LoginModal openModal={openLoginModal} onCloseModal={() => setOpenLoginModal(false)} />
         <Navbar.Toggle />
       </div>
       <Navbar.Collapse>

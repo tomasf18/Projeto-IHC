@@ -32,6 +32,7 @@ export default function Component() {
 
   const data = jsArray;
 
+  const headValues = ["Establishment", "Type of Service", "Service", "Price", "Professional", "Date", "Time"];
   const keys = Object.keys(data.length ? data[0] : {});
 
   const [isModalOpen, setIsModalOpen] = useState(false);
@@ -105,12 +106,12 @@ export default function Component() {
     (!existsAppointment ? (<div className="flex items-center col-span-5 h-full">
       <h1 className="text-2xl">You have no appointments. </h1>
     </div>) :
-    (<div className="overflow-x-auto ml-20">
+    (<div className="">
       {jsArray.length > 0 && (
         <Table>
-          <Table.Head>
-            {keys.map((item, idx) => (
-              <Table.HeadCell className="text-center  border-2" key={idx}>
+          <Table.Head className="">
+            {headValues.map((item, idx) => (
+              <Table.HeadCell className="text-center border-2" key={idx}>
                 {item}
               </Table.HeadCell>
             ))}
@@ -133,17 +134,15 @@ export default function Component() {
               ) => (
                 <tr key={idx}>
                   {keys.map((key, idx) => (
-                    <Table.Cell className="text-center  border-2" key={idx}>
-                      {item[key]}
+                    <Table.Cell className="text-center border-2 bg" key={idx}>
+                      <h1 className="text-lg">{item[key]}{(key === "servicePrice") ? '€' : ''}</h1>
                     </Table.Cell>
                   ))}
 
-                  <Table.Cell className="text-center  border-2">
-                    <button
-                      className="text-green-500 justi "
-                      onClick={() => setIsModalOpen2(true)}
-                    >
-                      Edit
+                  <Table.Cell className="text-center border-2 px-4">
+                    <button className="w-full h-10 border-2 text-green-500 hover:text-white bg-white hover:bg-green-500 hover:shadow-lg font-medium rounded-lg text-sm
+                                                transition-all duration-300 ease-in-out" onClick={() => setIsModalOpen2(true)}> 
+                                                    Edit
                     </button>
                   </Table.Cell>
                   <Modal
@@ -192,16 +191,16 @@ export default function Component() {
 
                               <div className="grid grid-cols-2 gap-20">
                                 <Button
-                                  onClick={() => setIsModalOpen3(false)}
-                                  color="blue"
-                                >
-                                  No
-                                </Button>
-                                <Button
                                   onClick={() => handleeditar(item)}
                                   color="red"
                                 >
                                   Yes
+                                </Button>
+                                <Button
+                                  onClick={() => setIsModalOpen3(false)}
+                                  color="blue"
+                                >
+                                  No
                                 </Button>
                               </div>
                             </div>
@@ -211,12 +210,10 @@ export default function Component() {
                       </div>
                     </Modal.Body>
                   </Modal>
-                  <Table.Cell className=" text-center border-2">
-                    <button
-                      className="  text-red-500"
-                      onClick={() => setIsModalOpen(true)}
-                    >
-                      Cancel
+                  <Table.Cell className=" text-center border-2 px-4">
+                    <button className="w-full h-10 border-2 text-red-500 hover:text-white bg-white hover:bg-red-700 hover:shadow-lg font-medium rounded-lg text-sm
+                                                transition-all duration-300 ease-in-out" onClick={() => setIsModalOpen(true)}> 
+                                                    Cancel
                     </button>
                     <Modal
                       show={isModalOpen}
@@ -234,16 +231,16 @@ export default function Component() {
 
                           <div className="grid grid-cols-2 gap-20">
                             <Button
-                              onClick={() => setIsModalOpen(false)}
-                              color="blue"
-                            >
-                              No
-                            </Button>
-                            <Button
                               onClick={() => handledelete(item)}
                               color="red"
                             >
                               Yes
+                            </Button>
+                            <Button
+                              onClick={() => setIsModalOpen(false)}
+                              color="blue"
+                            >
+                              No
                             </Button>
                           </div>
                         </div>

@@ -8,7 +8,6 @@ import Help from "./pages/Help";
 import Appointments from "./pages/Appointments";
 import ProfessionalProfile from "./pages/ProfessionalProfile";
 import ClientProfile from "./pages/ClientProfile";
-import Register from "./pages/Register";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 import { AppointmentProvider } from "./contexts/AppointmentContext";
 
@@ -40,7 +39,6 @@ function App() {
             </AppointmentProvider>
           }
         />
-        <Route path="/register" element={<Register />} />
       </Routes>
     </BrowserRouter>
   );

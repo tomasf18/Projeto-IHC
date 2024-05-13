@@ -4,7 +4,7 @@ import { useUser } from "../../contexts/UserContext";
 export default function UtilizadorPage() {
   const { user } = useUser();
   return (
-    <Card className=" flex-center ">
+    <Card className=" flex-center sha ">
       
         <div className="xl:w-[90%] lg:w-[90%] md:w-[90%] sm:w-[92%] xs:w-[90%] mx-auto flex flex-col gap-4 items-center relative ">
           <div className="w-full my-auto py-6 flex flex-col justify-center gap-2">

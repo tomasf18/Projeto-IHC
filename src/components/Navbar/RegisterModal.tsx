@@ -1,16 +1,15 @@
-import { Checkbox, Label, Modal, TextInput } from "flowbite-react";
+{/*import { Checkbox, Label, Modal, TextInput } from "flowbite-react";
 import { useUser } from "../../contexts/UserContext";
 import { useNavigate, Link } from "react-router-dom";
 import { useState } from "react";
 
 export default function LoginModal({
-    openModal,
-    onCloseModal,
+    openRegisterModal,
+    setRegisterModalOpen,
 }: {
-    openModal: boolean;
-    onCloseModal: () => void;
+    openRegisterModal: boolean;
+    setRegisterModalOpen: (open: boolean) => void;
 }) {
-    const { login } = useUser();
     const navigate = useNavigate();
 
     const [email, setEmail] = useState("");
@@ -24,16 +23,15 @@ export default function LoginModal({
         setPassword(text);
     };
 
-    const handleLogin = () => {
-        login(email, password);
-        onCloseModal();
+    const handleRegister = () => {
+        setRegisterModalOpen(false);
         navigate("/");
         setEmail("");
         setPassword("");
     };
 
     return (
-        <Modal show={openModal} size="md" onClose={onCloseModal} popup lang="en">
+        <Modal show={openRegisterModal} size="md" onClose={() => setRegisterModalOpen(false)} popup lang="en">
             <Modal.Header />
             <Modal.Body>
                 <div className="space-y-6">
@@ -82,7 +80,7 @@ export default function LoginModal({
                         <button
                             className={`w-8/12 h-10 text-white bg-cyan-700 hover:bg-cyan-500 hover:shadow-lg font-medium rounded-lg text-sm
                                                 transition-all duration-300 ease-in-out ${email === "" || password === "" ? "hover:cursor-not-allowed" : ""}`}
-                            onClick={email === "" || password === "" ? undefined : handleLogin}
+                            onClick={email === "" || password === "" ? undefined : handleRegister}
                         >
                             Log in to your account
                         </button>
@@ -90,7 +88,7 @@ export default function LoginModal({
                     <div className="flex flex-col justify-center items-center text-sm font-medium text-gray-500 dark:text-gray-300">
                         Not registered yet?&nbsp;
                         <Link
-                            to=""
+                            to="/register"
                             className="text-cyan-700 hover:underline dark:text-cyan-500"
                         >
                             Create account
@@ -100,4 +98,4 @@ export default function LoginModal({
             </Modal.Body>
         </Modal>
     );
-}
+}*/}

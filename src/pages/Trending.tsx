@@ -24,7 +24,7 @@ export default function Trending() {
         >
           <p className="text-5xl mt-8 ml-10">Trending Haircuts</p>
           
-          <div className="flex  justify-center">
+          <div className="flex justify-center">
             <Buttongroup
               buttonNumber={selectedButton}
               onButtonClick={handleButtonClick}

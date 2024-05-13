@@ -53,7 +53,7 @@ function TypeOfService() {
             <div className="row-span-4 col-span-5 h-full">
                 <div className="flex flex-row justify-center items-center">
                     <h1
-                        className={`text-xl w-24 border-2 border-black rounded-l-lg px-2 my-2 hover:cursor-pointer hover:text-white hover:shadow-lg focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium text-center transition-all duration-300 ease-in-out ${
+                        className={`text-xl w-24 border-2 border-black rounded-l-lg px-2 my-2 hover:cursor-pointer hover:text-white hover:shadow-lg font-medium text-center transition-all duration-300 ease-in-out ${
                             isManSelected ? "bg-cyan-700 text-white" : "hover:bg-cyan-500"
                         }`}
                         onClick={() => handleSelectionChange(true)}
@@ -61,7 +61,7 @@ function TypeOfService() {
                         Man
                     </h1>
                     <h1
-                        className={`text-xl w-24 border-2 border-black rounded-r-lg px-2 my-2 hover:cursor-pointer hover:text-white hover:shadow-lg focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium text-center transition-all duration-300 ease-in-out ${
+                        className={`text-xl w-24 border-2 border-black rounded-r-lg px-2 my-2 hover:cursor-pointer hover:text-white hover:shadow-lg font-medium text-center transition-all duration-300 ease-in-out ${
                             !isManSelected ? "bg-cyan-700 text-white" : "hover:bg-cyan-500"
                         }`}
                         onClick={() => handleSelectionChange(false)}

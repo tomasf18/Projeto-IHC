@@ -12,7 +12,7 @@ const SelectedTypeOfService = () => {
         Man: {
             "Hair": [
                 { name: "Mullet", price: 20, id: 1 },
-                { name: "Fade", price: 25, id: 2 },
+                { name: "Low Fade", price: 25, id: 2 },
                 { name: "Undercut", price: 30, id: 3 },
                 { name: "Buzz Cut", price: 15, id: 4 },
                 { name: "Quiff", price: 25, id: 5 },

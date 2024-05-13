@@ -26,7 +26,7 @@ function ProfessionalCard({
   return (
     <div
       onClick={handleProfessionalSelection}
-      className={`flex rounded-xl border border-gray-200 shadow-md flex-col h-60 w-52 m-2 hover:cursor-pointer hover:text-white hover:shadow-lg focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium text-center hover:-translate-y-1 transition-all duration-300 ease-in-out ${
+      className={`flex rounded-xl border border-gray-200 shadow-md flex-col h-60 w-52 m-2 hover:cursor-pointer hover:text-white hover:shadow-lg font-medium text-center hover:-translate-y-1 transition-all duration-300 ease-in-out ${
         selectedProfessional === name
           ? "bg-cyan-700 text-white"
           : "bg-white hover:bg-cyan-500"
