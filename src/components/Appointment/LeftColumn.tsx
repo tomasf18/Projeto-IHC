@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom";
 import { useAppointmentContext } from "../../contexts/AppointmentContext";
 import { useMixContext } from "../../contexts/MixContext";
 import Indicators from "./Indicators";
@@ -23,7 +24,7 @@ function LeftColumn({ helpText } : { helpText: string }) {
                 </h1>
             </div>
             <span className="row-span-1 flex justify-center items-center text-blue-600 hover:text-blue-700 hover:underline">
-                <a href="/ajuda.html">Need Help?</a>
+                <Link to="/help">Need Help?</Link>
             </span>
             <div className="row-span-1 flex items-center justify-center">
                     <button className={`w-44 h-10 text-white bg-cyan-700 hover:bg-cyan-500 hover:shadow-lg font-medium rounded-lg text-sm

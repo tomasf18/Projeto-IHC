@@ -39,7 +39,7 @@ function DateComponent() {
             disabledText: "text-gray-400 pointer-events-none hover:bg-white", 
             input: "border-2 border-gray-200 text-center focus:border-cyan-700 focus:ring-2 focus:ring-cyan-700 focus:ring-opacity-50 hover:border-cyan-700 hover:ring-2 hover:ring-cyan-700 hover:ring-opacity-50 hover:shadow-md hover:cursor-pointer transition-all duration-300 ease-in-out",
             inputIcon: "text-gray-900",
-            selected: "bg-cyan-700", 
+            selected: "bg-cyan-700 hover:bg-cyan-400 hover:text-white transition-all duration-300 ease-in-out", 
         },
         icons: {
             // () => ReactElement | JSX.Element
@@ -62,7 +62,7 @@ function DateComponent() {
     }
 
     return (
-        <div style={{ height: 424}} className={`flex flex-col h-full ${(selectedDate !== "" && !show) ? 'justify-center' : ''} items-center`}>
+        <div style={{ height: 424}} className={`relative flex flex-col h-full ${(selectedDate !== "" && !show) ? 'justify-center' : ''} items-center`}>
             <div className={    (selectedDate !== "" && !show) ? 'relative w-9/12 mb-3' : 'w-5/12 mt-3'}>
                 <Datepicker 
                     show={show} 
@@ -90,6 +90,9 @@ function DateComponent() {
                                             </div> 
                                         </div> 
             )}
+            {(selectedDate !== "" && !show) && (<div className="absolute bottom-0 w-full flex items-center justify-center">
+                <h1 className="text-md pt-10 flex flex-row"><strong className="pr-1">Note: </strong> If you need to reopen the calendar, just click on the date button.</h1>
+            </div>)}
         </div>
     )
 }
@@ -100,15 +103,15 @@ export default DateComponent;
 
 function generateRandomList() {
     // Gera um número aleatório entre 1 e 8
-    const listSize = Math.floor(Math.random() * 8) + 1;
+    const listSize = Math.floor(Math.random() * 7) + 1;
 
     // Cria uma lista vazia
     const list: number[] = [];
 
     // Enquanto a lista não tiver o tamanho desejado
     while (list.length < listSize) {
-        // Gera um número aleatório entre 1 e 8
-        const randomNumber = Math.floor(Math.random() * 8) + 1;
+        // Gera um número aleatório entre 1 e 7
+        const randomNumber = Math.floor(Math.random() * 7) + 1;
 
         // Se a lista não contém o número aleatório
         if (!list.includes(randomNumber)) {

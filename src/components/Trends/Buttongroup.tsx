@@ -29,7 +29,7 @@ const ButtonGroup: React.FC<ButtonGroupProps> = ({ buttonNumber, onButtonClick }
         )}
         onClick={() => handleButtonClick(1)}
       >
-        Men
+        Man
       </a>
       <button
         className={classNames(
@@ -41,7 +41,7 @@ const ButtonGroup: React.FC<ButtonGroupProps> = ({ buttonNumber, onButtonClick }
         )}
         onClick={() => handleButtonClick(2)}
       >
-        Women
+        Woman
       </button>
     </div>
     

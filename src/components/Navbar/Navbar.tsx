@@ -9,6 +9,7 @@ export default function Component() {
   const location = useLocation();
   const baseLinkClassName =
     "block py-2 pl-3 pr-4 md:p-0 border-b border-gray-100 text-gray-700 hover:bg-gray-50 md:border-0 md:hover:bg-transparent md:hover:text-cyan-700";
+
   const linkClassName = (path: string) => {
     return `${baseLinkClassName} ${
       location.pathname === path
@@ -28,6 +29,7 @@ export default function Component() {
     { path: "/shop", label: "Shop" },
     { path: "/help", label: "Help" },
   ];
+
   const stylistLinks = [
     { path: "/price-list", label: "Price List"},
     { path: "/appointments", label: "Appointments" },
@@ -122,15 +124,48 @@ export default function Component() {
           </>
         ) : (
           <>
-            {stylistLinks.map((link) => (
-              <Link
-                key={link.path}
-                to={link.path}
-                className={linkClassName(link.path)}
+              <i className="fa-solid fa-tag"></i><Link
+                key="/price-list"
+                to="/price-list"
+                className={linkClassName("/price-list")}
               >
-                {link.label}
+                Price List
               </Link>
-            ))}
+              <Link
+                key="/trending"
+                to="/trending"
+                className={linkClassName("/trending")}
+              >
+                Trends
+              </Link>
+              <Link
+                key="/appointment"
+                to="/appointment"
+                className={linkClassName("/appointment")}
+              >
+                My Appointments
+              </Link>
+              <Link
+                key="/establishments"
+                to="/establishments"
+                className={linkClassName("/establishments")}
+              >
+                Establishments
+              </Link>
+              <Link
+                key="/shop"
+                to="/shop"
+                className={linkClassName("/shop")}
+              >
+                Shop
+              </Link>
+              <Link
+                key="/help"
+                to="/help"
+                className={linkClassName("/help")}
+              >
+                Help
+              </Link>
           </>
         )}
       </Navbar.Collapse>
