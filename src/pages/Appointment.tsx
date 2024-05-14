@@ -44,15 +44,15 @@ function Appointment() {
                 <Marcação />
               </div>
             </div>
-
-            
           </div>
         </>
       )}
       {appointment && (
-        <div className="flex flex-grow bg-gray-100 justify-center items-center">
-          <MakeAppointment />
-        </div>
+        <>
+          <div className="flex flex-grow bg-gray-100 justify-center items-center">
+            <MakeAppointment />
+          </div>
+        </>
       )}
       <Footer />
     </div>

@@ -122,10 +122,11 @@ export default function AppointmentsTabs({ tabDays }: { tabDays: string[] }) {
     appointment: any;
   }) => (
     <div
-      className="flex justify-between items-center px-4 py-2 border-b"
+      className="flex items-center px-4 py-2 border-b"
       style={{ minHeight: "90px" }}
     >
-      <div>
+      <span className="font-semibold">{slot}</span>
+      <div className="flex space-x-4 ml-32">
         {appointment ? (
           <>
             <span className="font-semibold">{appointment.title}</span>
@@ -138,7 +139,6 @@ export default function AppointmentsTabs({ tabDays }: { tabDays: string[] }) {
           <span>---------------------------------</span>
         )}
       </div>
-      <span className="font-semibold">{slot}</span>
     </div>
   );
 
