@@ -1,30 +1,19 @@
-import { Link } from "react-router-dom";
 import { useAppointmentContext } from "../../../contexts/AppointmentContext";
-import Indicators from "../Indicators";
 import Dropdown from "./Dropdown";
 import Mapa from "./Map";
+import LeftColumn from "../LeftColumn";
 
 function Localization() {
-    const { currentStep, nextStep, isDropdownHidden, selectedDistrict, establishmentsPerDistrict } = useAppointmentContext();
+    const { nextStep, isDropdownHidden, selectedDistrict, establishmentsPerDistrict } = useAppointmentContext();
 
     console.log("Localization -> selectedDistrict", selectedDistrict);
     
     return (
         <>
-            <div className="row-span-6 grid grid-rows-6 h-full border-e-2 border-black">
-                <Indicators currentStep={currentStep} />
-                <div className="row-span-4 flex justify-center items-center text-center">
-                    <h1 className="p-2">
-                        <i className="fa-solid fa-circle-info pr-2"></i>Select the establishment where you want to make an appointment
-                    </h1>
-                </div>
-                <span className="row-span-1 flex justify-center items-center text-blue-600 hover:text-blue-700 hover:underline">
-                    <Link to="/help">Need Help?</Link>
-                </span>
-            </div>
+            <LeftColumn helpText="Select the establishment where you want to make an appointment." />
 
             <div className="row-span-1 flex justify-center items-center col-span-5 h-full border-b-2 border-black">
-                <h1 className="text-5xl">Establishment Selection</h1>
+                <h1 className="text-5xl">1. Establishment Selection</h1>
             </div>
 
             <div className="row-span-4 col-span-5 h-full">

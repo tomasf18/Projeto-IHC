@@ -173,7 +173,7 @@ export default function Component() {
                             transition-all duration-300 ease-in-out ${(selectedDate === "" || selectedTime === "") ? 'hover:cursor-not-allowed' : ''}`}
                             onClick={(selectedDate === "" || selectedTime === "") ? undefined : () => setIsModalOpen3(true)}
                           >
-                            Edit
+                            Select
                           </button>
                           <Modal
                           show={isModalOpen3}

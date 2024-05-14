@@ -11,6 +11,7 @@ import ClientProfile from "./pages/ClientProfile";
 import PriceListPage from "./pages/PriceListPage";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 import { AppointmentProvider } from "./contexts/AppointmentContext";
+import { MixProvider } from "./contexts/MixContext";
 
 function App() {
   return (
@@ -24,7 +25,9 @@ function App() {
           path="/appointment"
           element={
             <AppointmentProvider>
-              <Appointment />
+              <MixProvider>
+                <Appointment />
+              </MixProvider>
             </AppointmentProvider>
           }
         />

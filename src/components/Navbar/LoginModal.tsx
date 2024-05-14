@@ -1,7 +1,7 @@
 import { Checkbox, Label, Modal, TextInput } from "flowbite-react";
 import { useUser } from "../../contexts/UserContext";
 import { useNavigate, Link } from "react-router-dom";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 
 export default function LoginModal({
     openModal,
@@ -15,21 +15,57 @@ export default function LoginModal({
 
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
+    const [emailError, setEmailError] = useState("");
+    const [passwordError, setPasswordError] = useState("");
+
+    useEffect(() => {
+        if (!openModal) {
+            setEmailError("");
+            setPasswordError("");
+        }
+    }, [openModal]);
 
     const handleEmailChange = (text: string) => {
         setEmail(text);
+        validateEmail(text);
     };
 
     const handlePasswordChange = (text: string) => {
         setPassword(text);
+        validatePassword(text);
     };
 
+    const validateEmail = (email: string) => {
+        if (!email.endsWith('@gmail.com') && !email.endsWith('@stylistco.com')) {
+            setEmailError('Email must be like @gmail.com or @stylistco.com');
+            return false;
+        } else {
+            setEmailError('');
+            return true;
+        }
+    };
+    
+    const validatePassword = (password: string) => {
+        if (password === '') {
+            setPasswordError('Password cannot be empty');
+            return false;
+        } else {
+            setPasswordError('');
+            return true;
+        }
+    };
+    
     const handleLogin = () => {
-        login(email, password);
-        onCloseModal();
-        navigate("/");
-        setEmail("");
-        setPassword("");
+        const isEmailValid = validateEmail(email);
+        const isPasswordValid = validatePassword(password);
+    
+        if (isEmailValid && isPasswordValid) {
+            login(email, password);
+            onCloseModal();
+            navigate("/");
+            setEmail("");
+            setPassword("");
+        }
     };
 
     return (
@@ -51,6 +87,7 @@ export default function LoginModal({
                             value={email}
                             onChange={(e) => handleEmailChange(e.target.value)}
                         />
+                        {emailError && <div className="text-red-500">{emailError}</div>}
                     </div>
                     <div>
                         <div className="mb-2 block">
@@ -65,6 +102,7 @@ export default function LoginModal({
                                 handlePasswordChange(e.target.value)
                             }
                         />
+                        {passwordError && <div className="text-red-500">{passwordError}</div>}
                     </div>
                     <div className="flex justify-between">
                         <div className="flex items-center gap-2">
@@ -81,8 +119,8 @@ export default function LoginModal({
                     <div className="w-full flex justify-center items-center">
                         <button
                             className={`w-8/12 h-10 text-white bg-cyan-700 hover:bg-cyan-500 hover:shadow-lg font-medium rounded-lg text-sm
-                                                transition-all duration-300 ease-in-out ${email === "" || password === "" ? "hover:cursor-not-allowed" : ""}`}
-                            onClick={email === "" || password === "" ? undefined : handleLogin}
+                                                transition-all duration-300 ease-in-out`}
+                            onClick={handleLogin}
                         >
                             Log in to your account
                         </button>

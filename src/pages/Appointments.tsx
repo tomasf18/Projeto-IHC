@@ -11,10 +11,10 @@ export default function Appointments() {
           <Navbar />
         </div>
         <div
-          className="flex-grow bg-gray-100 pl-40 pr-40 mt-8"
+          className="flex-grow bg-gray-100 pl-8 pr-8 mt-8"
           style={{ paddingTop: "60.8px" }}
         >
-          <div className="bg-white rounded-xl p-8 mb-8">
+          <div className="bg-white rounded-xl p-8 mb-8 shadow-lg">
             <h2 className="text-4xl font-semibold mb-4">Appointments</h2>
             <AppointmentTabs tabDays={tabDays()} />
           </div>

@@ -1,10 +1,13 @@
 import { Button } from "flowbite-react";
 import { Link } from "react-router-dom";
 import { useAppointmentContext } from "../../../contexts/AppointmentContext";
+import { useMixContext } from "../../../contexts/MixContext";
 
 function Confirmed(){
+    const { setCreateAppointment } = useMixContext();
     const { reset } = useAppointmentContext();
     const handleClick = () => {
+        setCreateAppointment(false);
         reset();
     }
     return (

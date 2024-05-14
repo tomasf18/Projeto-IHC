@@ -103,16 +103,9 @@ export default function AppointmentsTabs({ tabDays }: { tabDays: string[] }) {
     ],
   ];
 
-  const Slots: string[] = [
-    "09:00",
-    "10:00",
-    "11:00",
-    "12:00",
-    "14:00",
-    "15:00",
-    "16:00",
-    "17:00",
-  ];
+
+  const MorningSlots: string[] = ["09:00", "10:00", "11:00", "12:00"];
+  const AfternoonSlots: string[] = ["14:00", "15:00", "16:00", "17:00"];
 
   const AppointmentSlot = ({
     slot,
@@ -152,18 +145,36 @@ export default function AppointmentsTabs({ tabDays }: { tabDays: string[] }) {
                 <h3 className="text-2xl font-semibold mb-4">
                   Appointments of day {day}
                 </h3>
-                {Slots.map((slot, slotIndex) => {
-                  const appointment = DayAppointments[index]?.find((m) =>
-                    m.time.startsWith(slot)
-                  );
-                  return (
-                    <AppointmentSlot
-                      key={slotIndex}
-                      slot={slot}
-                      appointment={appointment}
-                    />
-                  );
-                })}
+                <div className="flex">
+                  <div className="w-1/2">
+                    {MorningSlots.map((slot, slotIndex) => {
+                      const appointment = DayAppointments[index]?.find((m) =>
+                        m.time.startsWith(slot)
+                      );
+                      return (
+                        <AppointmentSlot
+                          key={slotIndex}
+                          slot={slot}
+                          appointment={appointment}
+                        />
+                      );
+                    })}
+                  </div>
+                  <div className="w-1/2">
+                    {AfternoonSlots.map((slot, slotIndex) => {
+                      const appointment = DayAppointments[index]?.find((m) =>
+                        m.time.startsWith(slot)
+                      );
+                      return (
+                        <AppointmentSlot
+                          key={slotIndex}
+                          slot={slot}
+                          appointment={appointment}
+                        />
+                      );
+                    })}
+                  </div>
+                </div>
               </div>
             </Tabs.Item>
           ))}

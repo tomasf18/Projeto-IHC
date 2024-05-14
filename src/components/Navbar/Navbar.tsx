@@ -23,7 +23,7 @@ export default function Component() {
   const clientLinks = [
     { path: "/price-list", label: "Price List"},
     { path: "/trending", label: "Trends" },
-    { path: "/appointment", label: "MyAppointments" },
+    { path: "/appointment", label: "My Appointments" },
     { path: "/establishments", label: "Establishments" },
     { path: "/shop", label: "Shop" },
     { path: "/help", label: "Help" },

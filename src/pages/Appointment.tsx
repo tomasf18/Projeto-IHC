@@ -3,14 +3,14 @@ import Navbar from "../components/Navbar/Navbar";
 import MakeAppointment from "../components/Appointment/MakeAppointment";
 import { useAppointmentContext } from "../contexts/AppointmentContext";
 import Marcação from "../components/ClientPage/MarcaçõesClientes";
-import { useState } from "react";
+import { useMixContext } from "../contexts/MixContext";
 
 function Appointment() {
   const { confirmed } = useAppointmentContext();
-  const [appointment, setAppointment] = useState(false);
+  const { createAppointment, setCreateAppointment } = useMixContext();
 
   const handleMakeAppointment = () => {
-    setAppointment(true);
+    setCreateAppointment(true);
   };
 
   return (
@@ -22,7 +22,7 @@ function Appointment() {
       <div className="z-20">
         <Navbar />
       </div>
-      {!appointment && (
+      {!createAppointment && (
         <>
           <div
             className="flex-grow bg-gray-100 px-8 mt-8"
@@ -36,8 +36,7 @@ function Appointment() {
                                               transition-all duration-300 ease-in-out`}
                   onClick={handleMakeAppointment}
                 >
-                  <i className="fa-solid fa-plus pr-1"></i> Create New
-                  Appointment
+                  <i className="fa-solid fa-plus pr-1"></i> Create New Appointment
                 </button>
               </div>
               <div className="w-full mt-5 mb-4">
@@ -47,9 +46,9 @@ function Appointment() {
           </div>
         </>
       )}
-      {appointment && (
+      {createAppointment && (
         <>
-          <div className="flex flex-grow bg-gray-100 justify-center items-center">
+          <div className="flex flex-grow bg-gray-100 justify-center items-center" style={{ paddingTop: "60.8px" }}>
             <MakeAppointment />
           </div>
         </>
