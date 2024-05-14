@@ -24,7 +24,7 @@ export default function Component() {
   const clientLinks = [
     { path: "/shop", label: "Shop" },
     { path: "/trending", label: "Trends" },
-    { path: "/appointment", label: "Appointment" },
+    { path: "/appointment", label: "MyAppointments" },
     { path: "/establishments", label: "Establishments" },
     { path: "/help", label: "Help" },
   ];

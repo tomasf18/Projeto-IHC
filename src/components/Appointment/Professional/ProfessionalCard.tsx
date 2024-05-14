@@ -108,7 +108,7 @@ function ProfessionalCard({
           </svg>
         </div>
         <button
-          onClick={() => setOpenProfessionalModal(true)}
+          onClick={(e) => {e.stopPropagation(); setOpenProfessionalModal(true);}}
           className="text-center w-full pt-2 text-xs font-medium underline hover:no-underline"
         >
           View Professional's Details
