@@ -1,10 +1,8 @@
 import Footer from "../components/Footer/Footer";
 import Navbar from "../components/Navbar/Navbar";
 import UtilizadorPage from "../components/ClientPage/UtilizadorPage";
-import Marcação from "../components/ClientPage/MarcaçõesClientes";
 
 export default function ClientProfile() {
-  const jsArray = localStorage.getItem("userAppointments") || [];
   return (
     <>
       <div className="flex flex-col min-h-screen">
@@ -19,12 +17,7 @@ export default function ClientProfile() {
             <span className="text-gray-900 text-4xl">Client Profile</span>
           </div>
           <div className="w-">
-          <UtilizadorPage />
-          {jsArray.length > 0 && (
-          <><p className="text-3xl mt-6">Appointments</p>
-            <div className="w-full mt-5 mb-4">
-                <Marcação />
-              </div></>)}
+            <UtilizadorPage />
           </div>
         </div>
         <Footer />

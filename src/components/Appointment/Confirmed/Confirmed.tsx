@@ -17,7 +17,7 @@ function Confirmed(){
               <p className="text-center">Your appointment has been confirmed successfully. Now you can find it by clicking on “View Appointments”.</p>
               <div className="flex flex-row justify-around w-full mt-4">
                   <Link to="/" onClick={handleClick} ><Button color="blue">Back to Home</Button></Link>
-                  <Link to="/client" onClick={handleClick} ><Button color="success">View Appointments</Button></Link>
+                  <Link to="/appointment" onClick={handleClick} ><Button color="success">View Appointments</Button></Link>
               </div>
           </div>
         </div>

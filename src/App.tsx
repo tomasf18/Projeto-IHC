@@ -8,6 +8,7 @@ import Help from "./pages/Help";
 import Appointments from "./pages/Appointments";
 import ProfessionalProfile from "./pages/ProfessionalProfile";
 import ClientProfile from "./pages/ClientProfile";
+import PriceListPage from "./pages/PriceListPage";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 import { AppointmentProvider } from "./contexts/AppointmentContext";
 
@@ -29,7 +30,8 @@ function App() {
         />
         <Route path="/establishments" element={<Establishments />} />
         <Route path="/help" element={<Help />} />
-        <Route path="/MyAppointments" element={<Appointments />} />
+        <Route path="/price-list" element={<PriceListPage />} />
+        <Route path="/appointments" element={<Appointments />} />
         <Route path="/professional" element={<ProfessionalProfile />} />
                 <Route
           path="/client"

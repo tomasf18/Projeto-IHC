@@ -192,13 +192,13 @@ export default function Component() {
                               <div className="grid grid-cols-2 gap-20">
                                 <Button
                                   onClick={() => handleeditar(item)}
-                                  color="red"
+                                  color="blue"
                                 >
                                   Yes
                                 </Button>
                                 <Button
                                   onClick={() => setIsModalOpen3(false)}
-                                  color="blue"
+                                  color="red"
                                 >
                                   No
                                 </Button>

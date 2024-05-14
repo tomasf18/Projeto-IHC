@@ -2,7 +2,6 @@ import { useState } from "react";
 import { Avatar, Dropdown, Navbar } from "flowbite-react";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import LoginModal from "./LoginModal";
-import AppointmentModal from "./AppointmentModal";
 import { useUser } from "../../contexts/UserContext";
 
 export default function Component() {
@@ -22,18 +21,19 @@ export default function Component() {
     label: string;
   }
   const clientLinks = [
-    { path: "/shop", label: "Shop" },
+    { path: "/price-list", label: "Price List"},
     { path: "/trending", label: "Trends" },
     { path: "/appointment", label: "MyAppointments" },
     { path: "/establishments", label: "Establishments" },
+    { path: "/shop", label: "Shop" },
     { path: "/help", label: "Help" },
   ];
   const stylistLinks = [
-    { path: "/help", label: "Help" },
+    { path: "/price-list", label: "Price List"},
     { path: "/appointments", label: "Appointments" },
+    { path: "/help", label: "Help" },
   ];
   const [openLoginModal, setOpenLoginModal] = useState(false);
-  const [openAppointmentModal, setOpenAppointmentModal] = useState(false);
   const { user, logout } = useUser();
 
   const handleProfileClick = () => {
@@ -42,11 +42,7 @@ export default function Component() {
     } else {
       navigate("/professional");
     }
-  }
-
-  function onCloseLoginModal() {
-    setOpenLoginModal(false);
-  }
+  };
 
   function handleLogout() {
     logout();
@@ -60,11 +56,10 @@ export default function Component() {
           <a
             href={link.path}
             className={linkClassName(link.path)}
-            onClick={(e) => { e.preventDefault(); setOpenAppointmentModal(true); }}
+            onClick={(e) => { e.preventDefault(); setOpenLoginModal(true); }}
           >
             {link.label}
           </a>
-          <AppointmentModal openModal={openAppointmentModal} onCloseModal={() => setOpenAppointmentModal(false)} />
         </div>
       );
     } else {
