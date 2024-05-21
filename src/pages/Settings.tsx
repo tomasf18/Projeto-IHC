@@ -1,7 +1,7 @@
 import Footer from "../components/Footer/Footer";
 import Navbar from "../components/Navbar/Navbar";
 
-export default function Shop() {
+export default function Settings() {
   return (
     <>
       <div className="flex flex-col min-h-screen">
@@ -12,7 +12,7 @@ export default function Shop() {
         >
           <div className="pl-8 pr-8 mt-8">
             <div className="bg-white rounded-xl p-8 shadow-lg min-h-160">
-              <h2 className="text-4xl font-semibold mb-4">Shop</h2>
+              <h2 className="text-4xl font-semibold mb-4">Settings</h2>
               <div className="mt-52 flex justify-center items-center">
                 <h2 className="text-3xl mb-4">For future implementation...</h2>
               </div>

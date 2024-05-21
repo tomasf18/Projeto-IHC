@@ -37,7 +37,7 @@ export default function LoginModal({
 
     const validateEmail = (email: string) => {
         if (!email.endsWith('@gmail.com') && !email.endsWith('@stylistco.com')) {
-            setEmailError('Email must be like @gmail.com or @stylistco.com');
+            setEmailError('* Email must be like @gmail.com or @stylistco.com');
             return false;
         } else {
             setEmailError('');
@@ -47,7 +47,7 @@ export default function LoginModal({
     
     const validatePassword = (password: string) => {
         if (password === '') {
-            setPasswordError('Password cannot be empty');
+            setPasswordError('* Password cannot be empty');
             return false;
         } else {
             setPasswordError('');
@@ -82,7 +82,6 @@ export default function LoginModal({
                         </div>
                         <TextInput
                             id="email"
-                            placeholder="email@email.com"
                             required
                             value={email}
                             onChange={(e) => handleEmailChange(e.target.value)}

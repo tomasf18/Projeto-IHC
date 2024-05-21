@@ -39,7 +39,7 @@ function DateComponent() {
             disabledText: "text-gray-400 pointer-events-none hover:bg-white", 
             input: "border-2 border-gray-200 text-center focus:border-cyan-700 focus:ring-2 focus:ring-cyan-700 focus:ring-opacity-50 hover:border-cyan-700 hover:ring-2 hover:ring-cyan-700 hover:ring-opacity-50 hover:shadow-md hover:cursor-pointer transition-all duration-300 ease-in-out",
             inputIcon: "text-gray-900",
-            selected: "bg-cyan-700 hover:bg-cyan-400 hover:text-white transition-all duration-300 ease-in-out", 
+            selected: "bg-cyan-700 hover:bg-cyan-300 hover:text-white transition-all duration-300 ease-in-out", 
         },
         icons: {
             // () => ReactElement | JSX.Element

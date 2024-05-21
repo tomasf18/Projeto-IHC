@@ -9,6 +9,7 @@ import Appointments from "./pages/Appointments";
 import ProfessionalProfile from "./pages/ProfessionalProfile";
 import ClientProfile from "./pages/ClientProfile";
 import PriceListPage from "./pages/PriceListPage";
+import Settings from "./pages/Settings";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 import { AppointmentProvider } from "./contexts/AppointmentContext";
 import { MixProvider } from "./contexts/MixContext";
@@ -35,6 +36,7 @@ function App() {
         <Route path="/help" element={<Help />} />
         <Route path="/price-list" element={<PriceListPage />} />
         <Route path="/appointments" element={<Appointments />} />
+        <Route path="/settings" element={<Settings />} />
         <Route path="/professional" element={<ProfessionalProfile />} />
                 <Route
           path="/client"
