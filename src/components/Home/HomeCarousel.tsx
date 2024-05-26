@@ -11,15 +11,15 @@ export default function CarouselHome() {
   useEffect(() => {
     const updateHeight = () => {
       if (window.innerWidth < 640) {
-        setHeight('400px');
+        setHeight('550px');
       } else if (window.innerWidth < 1024) {
-        setHeight('500px');
+        setHeight('550px');
       } else if (window.innerWidth < 1280) {
-        setHeight('650px');
+        setHeight('550px');
       } else if (window.innerWidth < 1536) {
-        setHeight('800px');
+        setHeight('550px');
       } else {
-        setHeight('950px');
+        setHeight('550px');
       }
     };
 

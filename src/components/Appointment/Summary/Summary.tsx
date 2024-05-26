@@ -1,14 +1,9 @@
-import { Button, Modal } from "flowbite-react";
 import { useAppointmentContext } from "../../../contexts/AppointmentContext";
-import { useState } from "react";
-import { HiOutlineExclamationCircle } from "react-icons/hi";
 import LeftColumn from "../LeftColumn";
 
 function Summary() {
     const { prevStep, selectedLocalization, selectedTypeOfService, selectedServiceName, selectedServicePrice, 
         selectedProfessional, selectedDate, selectedTime, setSelectedDate, setSelectedTime, setConfirmed } = useAppointmentContext();
-
-    const [isModalOpen, setIsModalOpen] = useState(false); 
     
     const handleBackClick = () => {
         prevStep();
@@ -18,7 +13,6 @@ function Summary() {
     };
 
     const handleConfirmClick = () => {
-        setIsModalOpen(false);
         setConfirmed(true);
         let userAppointment = {
             localization: selectedLocalization,
@@ -89,30 +83,11 @@ function Summary() {
                     <div className="col-span-4"></div>
                     <div className="w-full my-8 md:col-span-2 flex items-center justify-center">
                         <button className={`w-8/12 h-full text-white bg-green-400 hover:bg-cyan-200 hover:shadow-lg font-medium rounded-lg text-sm
-                                            transition-all duration-300 ease-in-out`} onClick={() => setIsModalOpen(true)}> 
-                                                    Confirm
+                                            transition-all duration-300 ease-in-out`} onClick={handleConfirmClick}> 
+                                                    Confirm Appointment
                         </button>
                     </div>
             </div>
-            <Modal show={isModalOpen} size="lg" popup onClose={() => setIsModalOpen(false)} className="" >
-                <Modal.Header />
-                <Modal.Body>
-                    <div className="space-y-6">
-                        <HiOutlineExclamationCircle className="mx-auto mb-4 h-14 w-14 text-gray-400 dark:text-gray-200" />
-                        <h3 className="text-xl font-medium text-gray-900 dark:text-white text-center">
-                            Are you sure you want to confirm this appointment?
-                        </h3>
-                        <div className="grid grid-cols-2 gap-20">
-                            <Button onClick={() => setIsModalOpen(false)} color="red" >
-                                No
-                            </Button>
-                            <Button onClick={handleConfirmClick} color="green" >
-                                Yes
-                            </Button>
-                        </div>
-                    </div>
-                </Modal.Body>
-            </Modal>
         </>
     );
 }
